@@ -104,6 +104,7 @@ kbd { display: inline-block; min-width: 1.8em; padding: 0.05em 0.35em; margin-ri
 /* touch: stick left, one big Strike, skills around it, Roll; >= 44 px everywhere */
 .tpad { position: absolute; left: 0; top: 25%; bottom: 0; width: 48%; pointer-events: auto; }
 .tbase { position: absolute; width: 7.5em; height: 7.5em; margin: -3.75em 0 0 -3.75em; border-radius: 50%; background: rgba(255,255,255,.22); border: 0.2em solid rgba(47,36,31,.45); left: 22%; top: 64%; }
+.tbase { opacity: .55; transition: opacity .15s; } .tbase.on { opacity: 1; transition: none; }
 .tknob { position: absolute; left: 50%; top: 50%; width: 3.4em; height: 3.4em; margin: -1.7em 0 0 -1.7em; border-radius: 50%; background: var(--cream); border: 0.2em solid var(--ink); }
 .tbtns { position: absolute; right: var(--sr); bottom: var(--sb); width: 16em; height: 13em; pointer-events: none; }
 .tb { position: absolute; min-width: 48px; min-height: 48px; border-radius: 50%; border: 0.2em solid var(--ink); background: var(--cream); color: var(--ink); font-weight: 900; pointer-events: auto; overflow: hidden; touch-action: none; }
