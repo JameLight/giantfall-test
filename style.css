@@ -109,6 +109,10 @@ kbd { display: inline-block; min-width: 1.8em; padding: 0.05em 0.35em; margin-ri
 .tbtns { position: absolute; right: var(--sr); bottom: var(--sb); width: 16em; height: 13em; pointer-events: none; }
 .tb { position: absolute; min-width: 48px; min-height: 48px; border-radius: 50%; border: 0.2em solid var(--ink); background: var(--cream); color: var(--ink); font-weight: 900; pointer-events: auto; overflow: hidden; touch-action: none; }
 .tb b { position: relative; z-index: 1; font-size: max(12px, 0.9em); } .tb em { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: rgba(47,36,31,.5); }
+.tb { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.05em; padding: 0; }
+.tb .ic { position: relative; z-index: 1; width: 44%; height: 44%; } .tb b { line-height: 1; }
+.tb-sunder .ic { color: #8a3208; } .tb-tether .ic { color: #0b6f8c; }
+.key .ic { display: block; width: 1.5em; height: 1.5em; margin: 0.2em auto 0; } .k-sunder .ic { color: #a24a12; } .k-tether .ic { color: #1a7c96; }
 .tb.down { transform: scale(.92); filter: brightness(.9); }
 .tb-light { width: 6.6em; height: 6.6em; right: 0.2em; bottom: 0.2em; background: var(--gold); font-size: 1.1em; }
 .tb-sunder { width: 4.4em; height: 4.4em; right: 7.6em; bottom: 0.2em; background: #ffd2b0; }
