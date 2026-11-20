@@ -64,8 +64,10 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: #f3c9a8; fon
 .banner.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 .banner b { display: block; font-size: 2.8em; font-weight: 900; letter-spacing: .08em; } .banner span { font-weight: 700; font-size: 1.15em; }
 .banner.topple b { color: #ffe07a; font-size: 3.6em; } .banner.phase b { color: #ffb0a0; } .banner.down b { color: #ffc4b8; }
-.coach { position: absolute; left: 50%; bottom: calc(var(--sb) + 5.2em); transform: translateX(-50%) translateY(0.5em); max-width: min(32em, 86vw); padding: 0.55em 1em; background: rgba(251,243,228,.96); border: 0.16em solid var(--ink); border-radius: 0.9em; opacity: 0; transition: opacity .25s, transform .25s; text-align: center; }
-.coach.show { opacity: 1; transform: translateX(-50%); }
+.coach { position: absolute; left: var(--sl); top: calc(var(--st) + 2.9em); max-width: min(21em, 40vw); padding: 0.45em 0.8em; background: rgba(251,243,228,.9); border: 0.14em solid var(--ink); border-radius: 0.8em; opacity: 0; transition: opacity .25s, transform .25s; transform: translateY(-0.4em); font-size: max(12px, 0.92em); }
+.coach.show { opacity: 1; transform: none; }
+.touch-ui .coach { top: calc(var(--st) + 6.6em); max-width: 44vw; }
+@media (max-aspect-ratio: 1/1) { .touch-ui .coach { top: calc(var(--st) + 12.6em); left: 50%; max-width: 88vw; transform: translateX(-50%); } .touch-ui .coach.show { transform: translateX(-50%); } }
 .coach b { color: #7a4fa0; margin-right: 0.5em; }
 .nums { position: absolute; inset: 0; overflow: hidden; }
 .num { position: absolute; left: 0; top: 0; font-weight: 900; color: #fff; text-shadow: 0 0.12em 0 var(--ink); font-size: 1.15em; white-space: nowrap; }
@@ -113,7 +115,6 @@ kbd { display: inline-block; min-width: 1.8em; padding: 0.05em 0.35em; margin-ri
 .tb-breaker { width: 4.6em; height: 4.6em; right: 1.2em; bottom: 7.6em; background: #fff0c4; }
 .tb-breaker.glow { box-shadow: 0 0 0.9em var(--gold); animation: pulse .45s infinite alternate; }
 .tb-dodge { width: 4em; height: 4em; right: 12.6em; bottom: 0.2em; background: #e9e0ff; }
-.touch-ui .coach { bottom: calc(var(--sb) + 14em); }
 .touch-ui .hbar { bottom: auto; top: var(--st); width: 11em; }
 @media (max-aspect-ratio: 1/1) { .touch-ui .tbtns { font-size: min(1em, 3.3vw); } .gbar { width: 88vw; top: calc(var(--st) + 3.4em); } .touch-ui .gbar { top: calc(var(--st) + 6.4em); } .banner { top: 30%; } .touch-ui .hbar { top: var(--st); } .combo { top: 30%; } }
 .hide { display: none !important; }
