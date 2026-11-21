@@ -4,6 +4,7 @@
   --ink: #2f241f; --cream: #fbf3e4; --stone: #e6dac4; --gold: #f2b33d; --gold-d: #b07a10; --red: #d8402f; --cyan: #55d6f5; --orange: #ff8a3c;
   --u: clamp(0.75rem, 1.85vh, 1.15rem);
   --font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-th: "Sukhumvit Set", "Thonburi", "Leelawadee UI", "Noto Sans Thai", "Noto Sans Thai UI", system-ui, sans-serif;
   --sl: max(12px, var(--safe-area-inset-left, env(safe-area-inset-left))); --sr: max(12px, var(--safe-area-inset-right, env(safe-area-inset-right)));
   --st: max(10px, var(--safe-area-inset-top, env(safe-area-inset-top))); --sb: max(10px, var(--safe-area-inset-bottom, env(safe-area-inset-bottom)));
 }
@@ -174,3 +175,24 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .qa { text-align: left; margin: 0.4em 0 0.6em; } .qa label { display: block; font-weight: 700; margin: 0.7em 0 0.25em; font-size: max(13px, 0.9em); }
 .qa textarea { width: 100%; font: 16px/1.4 var(--font); padding: 0.4em 0.5em; border: 0.12em solid var(--ink); border-radius: 0.5em; background: #fff; color: var(--ink); resize: vertical; -webkit-user-select: text; user-select: text; touch-action: auto; }
 .qpick { display: flex; gap: 0.4em; flex-wrap: wrap; } .qpick button { flex: 1; min-height: 44px; } .qpick button.on { background: var(--gold); border-color: var(--ink); }
+
+/* Thai on the test link: a Thai face first and room above and below the line for vowels and tone marks */
+html[lang="th"] body, html[lang="th"] #ui button, html[lang="th"] .qa textarea { font-family: var(--font-th); }
+html[lang="th"] .coach span, html[lang="th"] .pcard span, html[lang="th"] .modal p, html[lang="th"] .banner span { line-height: 1.55; }
+/* skill icons on power cards and on the giant's status chips: what a card or status is about, without reading */
+.picons { display: flex; gap: 0.25em; justify-content: center; font-style: normal; }
+.picons .ic { width: 1.6em; height: 1.6em; }
+.chips i .ic { width: 1.05em; height: 1.05em; vertical-align: -0.18em; margin-right: 0.25em; }
+
+/* gold sparks: the Balance a blow adds flies into the bar (hud.sparks); a dark rim keeps them visible on the pale stone */
+.spark { position: absolute; left: 0; top: 0; width: max(13px, 0.85em); height: max(13px, 0.85em); border-radius: 50%; pointer-events: none; font-style: normal;
+  background: radial-gradient(circle, #fffbe0 0 22%, #ffc93d 48%, #e08a00 70%); border: 2px solid #6b3d00; box-shadow: 0 0 0.6em rgba(255,205,77,.95); }
+.spark.mix { width: max(16px, 1.05em); height: max(16px, 1.05em); }
+.spark.spend { width: max(19px, 1.25em); height: max(19px, 1.25em); background: radial-gradient(circle, #fff 0 25%, #ffd36b 50%, #f0a000 72%); box-shadow: 0 0 0.9em rgba(255,215,90,1); }
+.spark.repeat { background: radial-gradient(circle, #f2f2f2 0 25%, #b4ae9f 55%, #8a8476 72%); border-color: #4a463e; box-shadow: none; }
+.bar.bal.gain { animation: balgain .28s ease-out; }
+@keyframes balgain { 0% { box-shadow: 0 0 0 0.25em rgba(255,215,90,.95); filter: brightness(1.35); } 100% { box-shadow: 0 0 0.9em 0 rgba(255,215,90,0); filter: brightness(1); } }
+html[lang="th"] .bar.bal { height: max(19px, 1.3em); }
+html[lang="th"] .bar.bal em { letter-spacing: .03em; line-height: 1.35; display: flex; align-items: center; justify-content: center; }
+html[lang="th"] .chips i, html[lang="th"] .key small, html[lang="th"] .combo span { letter-spacing: 0; }
+html[lang="th"] .small { word-break: normal; line-break: auto; }
