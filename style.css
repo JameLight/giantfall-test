@@ -77,9 +77,9 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: #f3c9a8; fon
 .pausebtn { position: absolute; top: var(--st); right: var(--sr); width: 2.8em; height: 2.8em; min-width: 44px; min-height: 44px; border-radius: 0.7em; border: 0.16em solid var(--ink); background: var(--cream); font-weight: 900; color: var(--ink); }
 
 /* menus */
-.modal { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(30,20,16,.45); pointer-events: auto; padding: 1em; }
+.modal { position: absolute; inset: 0; z-index: 20; display: flex; align-items: center; justify-content: center; background: rgba(30,20,16,.45); pointer-events: auto; padding: 1em; }
 .modal.hide { display: none; }
-.card { width: min(30em, 92vw); max-height: 92vh; overflow: auto; background: var(--cream); border: 0.2em solid var(--ink); border-radius: 1.1em; padding: 1.2em 1.4em 1.3em; text-align: center; box-shadow: 0 0.4em 0 rgba(47,36,31,.4); }
+.card { width: min(30em, 92vw); max-height: 92vh; max-height: 92dvh; overflow: auto; touch-action: pan-y; overscroll-behavior: contain; background: var(--cream); border: 0.2em solid var(--ink); border-radius: 1.1em; padding: 1.2em 1.4em 1.3em; text-align: center; box-shadow: 0 0.4em 0 rgba(47,36,31,.4); }
 .card h1 { margin: 0.1em 0 0.2em; font-size: 2.8em; letter-spacing: .08em; } .card h1 span { color: var(--gold-d); }
 .card h2 { margin: 0.1em 0 0.5em; font-size: 1.8em; }
 .promise { font-size: 1.05em; font-weight: 600; margin: 0 0 0.9em; }
@@ -158,3 +158,10 @@ body.turn #turn { display: flex; }
 #turn b { font-size: 1.25em; font-weight: 800; } #turn span { font-size: 0.9em; opacity: .8; }
 @keyframes tilt { 0%, 25% { transform: rotate(0); } 55%, 100% { transform: rotate(-90deg); } }
 @media (prefers-reduced-motion: reduce) { #turn .ph { animation: none; transform: rotate(-90deg); } }
+
+/* while a menu (power cards, pause, end) is open the stick and buttons step aside: they were added after the menu and caught its taps */
+.modal-on .tpad, .modal-on .tbtns { visibility: hidden; pointer-events: none; }
+
+/* no browser zoom or text resizing on phones: every layer takes touches as game input */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+#app, #c, #ui, #ui button, .tpad, .tbtns, .tb { touch-action: none; }
