@@ -74,6 +74,8 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: #f3c9a8; fon
 .num { position: absolute; left: 0; top: 0; font-weight: 900; color: #fff; text-shadow: 0 0.12em 0 var(--ink); font-size: 1.15em; white-space: nowrap; }
 .num.big { font-size: 2em; color: #ffe07a; } .num.down { color: #fff3c4; font-size: 1.4em; } .num.hurt { color: #ff8f7a; }
 .num.tag { font-size: max(12px, 0.95em); letter-spacing: .06em; } .num.cracked { color: #ffb36b; } .num.bound { color: #9ff0ff; } .num.perfect { color: #9ff0ff; font-size: 1.3em; } .num.counter { color: #e8fdff; text-shadow: 0 0 0.5em #4fd8ff; }
+.num.counterdmg { color: #ffffff; font-size: 2.6em; text-shadow: 0 0 0.2em #12aee0, 0 0 0.6em #4fd8ff, 0 0.06em 0 #0a5f80; }
+.num.counterbig { color: #ffffff; font-size: 2.1em; letter-spacing: .05em; text-shadow: 0 0 0.25em #12aee0, 0 0 0.8em #4fd8ff, 0 0.08em 0 #0a5f80; }
 .flash { position: absolute; inset: 0; opacity: 0; mix-blend-mode: screen; }
 .pausebtn { position: absolute; top: var(--st); right: var(--sr); width: 2.8em; height: 2.8em; min-width: 44px; min-height: 44px; border-radius: 0.7em; border: 0.16em solid var(--ink); background: var(--cream); font-weight: 900; color: var(--ink); }
 
