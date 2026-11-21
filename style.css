@@ -89,6 +89,8 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: #f3c9a8; fon
 .promise { font-size: 1.05em; font-weight: 600; margin: 0 0 0.9em; }
 .ctl { display: grid; grid-template-columns: 1fr 1fr; gap: 0.35em 1em; text-align: left; margin: 0 auto 1em; max-width: 24em; font-size: max(12px, 0.92em); }
 kbd { display: inline-block; min-width: 1.8em; padding: 0.05em 0.35em; margin-right: 0.35em; background: var(--ink); color: #fff; border-radius: 0.35em; font: 800 max(12px, 0.85em) var(--font); text-align: center; }
+/* the main button of a menu stays in sight at the bottom of the card on short (landscape phone) screens; the rest scrolls behind it */
+.card .acts { position: sticky; bottom: 0; margin: 0.3em -1.4em -1.3em; padding: 0.2em 1.4em 0.9em; background: linear-gradient(rgba(251,243,228,0), var(--cream) 0.6em); z-index: 1; }
 .go { display: block; width: 100%; min-height: 44px; padding: 0.6em; margin-top: 0.4em; font-size: 1.2em; font-weight: 900; background: var(--gold); color: var(--ink); border: 0.16em solid var(--ink); border-radius: 0.8em; }
 .ghost { min-height: 44px; padding: 0.45em 0.9em; margin-top: 0.5em; font-weight: 700; background: transparent; color: var(--ink); border: 0.14em solid var(--ink); border-radius: 0.7em; }
 .row { display: flex; gap: 0.5em; justify-content: center; flex-wrap: wrap; }
@@ -217,3 +219,9 @@ html[lang="th"] .small { word-break: normal; line-break: auto; }
 .blessing span { font-size: max(12px, 0.8em); line-height: 1.35; }
 .hbar .bless { color: #8a4fc0; font-weight: 800; } .hbar .bless .ic { width: 1em; height: 1em; vertical-align: -0.15em; margin-right: 0.15em; }
 .hbar.blessed .bar.mine { box-shadow: 0 0 0.6em rgba(170,120,230,.85); }
+/* short screens (a phone on its side): menus tighten up so the blessings and the main button fit with little scrolling */
+@media (max-height: 500px) {
+  .card { padding: 0.7em 1.2em 1em; } .card .acts { margin: 0.2em -1.2em -1em; padding: 0.2em 1.2em 0.7em; }
+  .card h2 { font-size: 1.35em; margin: 0 0 0.2em; } .card h1 { font-size: 2.2em; }
+  .runbar { margin: 0.1em auto 0.4em; } .stats { margin: 0 0 0.3em; gap: 0.8em; } .stats b { font-size: 1.15em; }
+}
