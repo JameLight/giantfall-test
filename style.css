@@ -148,3 +148,13 @@ kbd { display: inline-block; min-width: 1.8em; padding: 0.05em 0.35em; margin-ri
 .num.power { color: #ffe07a; font-size: 1.15em; letter-spacing: .04em; } .num.power.cost { color: #ffb0a0; }
 .touch-ui .powers { display: none; }   /* no room on a phone: the name still pops over the hero, the list is in the pause menu */
 .plist { text-align: left; margin: 0 auto 0.8em; max-width: 26em; font-size: max(12px, 0.9em); } .plist b { display: block; margin-top: 0.35em; }
+
+/* phones in portrait: the game waits behind this until the phone is turned (main.js sets body.turn) */
+#turn { position: fixed; inset: 0; z-index: 50; display: none; flex-direction: column; justify-content: center; align-items: center; gap: 0.6em;
+  padding: 0 24px; text-align: center; background: linear-gradient(#f9d9b8, #e9a57c); font-size: clamp(16px, 4.6vw, 22px); pointer-events: auto; }
+body.turn #turn { display: flex; }
+#turn svg { width: 7em; height: 7em; fill: none; stroke: var(--ink); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+#turn .ph { transform-origin: 32px 28px; animation: tilt 2.4s ease-in-out infinite; }
+#turn b { font-size: 1.25em; font-weight: 800; } #turn span { font-size: 0.9em; opacity: .8; }
+@keyframes tilt { 0%, 25% { transform: rotate(0); } 55%, 100% { transform: rotate(-90deg); } }
+@media (prefers-reduced-motion: reduce) { #turn .ph { animation: none; transform: rotate(-90deg); } }
