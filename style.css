@@ -196,3 +196,11 @@ html[lang="th"] .bar.bal { height: max(19px, 1.3em); }
 html[lang="th"] .bar.bal em { letter-spacing: .03em; line-height: 1.35; display: flex; align-items: center; justify-content: center; }
 html[lang="th"] .chips i, html[lang="th"] .key small, html[lang="th"] .combo span { letter-spacing: 0; }
 html[lang="th"] .small { word-break: normal; line-break: auto; }
+
+/* difficulty level picker (start and end screens) and the unlock note */
+.ascpick { display: flex; align-items: center; justify-content: center; gap: 0.5em; margin: 0.6em 0; }
+.ascpick button { min-width: 44px; min-height: 44px; padding: 0 0.6em; }
+.ascpick span { display: flex; flex-direction: column; align-items: center; min-width: 12em; }
+.ascpick small { font-size: max(12px, 0.75em); color: #5b4a40; text-align: center; }
+.unlock { font-weight: 800; color: #9a5b00; margin: 0.5em 0 0; }
+.hbar .ascl { font-weight: 800; }
