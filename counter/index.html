@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Toppleheart</title>
+  <!-- added to an iPhone/Android home screen, the test link opens full screen (no browser bars) -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Toppleheart">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="data:,">
+  <!-- CrazyGames SDK v3 loads before the game code -->
+  <script src="https://sdk.crazygames.com/crazygames-sdk-v3.js"></script>
+  <link rel="stylesheet" href="style.css?v=b858aa3">
+</head>
+<body>
+  <div id="app">
+    <canvas id="c"></canvas>
+    <div id="ui"></div>
+    <div id="turn" role="alert"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="ph" x="22" y="10" width="20" height="36" rx="4"/><path class="ar" d="M12 44a22 22 0 0 0 30 10M38 50l4 4-5 3"/></svg><b>Turn your phone sideways</b><span>Toppleheart plays in landscape</span></div>
+    <div id="loader"><div class="ltitle">TOPPLE<span>HEART</span></div><div class="lfoot"><div class="lbar"><div id="lfill"></div></div><div class="ltext" id="ltext">Loading…</div></div></div>
+  </div>
+  <script src="game.js?v=b858aa3"></script>
+</body>
+</html>
