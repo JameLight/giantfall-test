@@ -219,6 +219,21 @@ html[lang="th"] .small { word-break: normal; line-break: auto; }
 .blessing span { font-size: max(12px, 0.8em); line-height: 1.35; }
 .hbar .bless { color: #8a4fc0; font-weight: 800; } .hbar .bless .ic { width: 1em; height: 1em; vertical-align: -0.15em; margin-right: 0.15em; }
 .hbar.blessed .bar.mine { box-shadow: 0 0 0.6em rgba(170,120,230,.85); }
+/* end screen: result on the left, Elara's blessings and the main button on the right when the screen is short and wide,
+   so the blessings are read whole and the button sits under them instead of on top of them (a laptop's short window too) */
+.end-r .acts { position: static; margin: 0.4em 0 0; padding: 0; background: none; }   /* never sticky here: it would slide over the blessings */
+@media (max-height: 680px) and (min-aspect-ratio: 3/2) {
+  .card:has(.endgrid.two) { width: min(56em, 96vw); }
+  .endgrid.two { display: grid; grid-template-columns: 1fr 1.15fr; grid-template-areas: "l r" "m r"; gap: 0 1.1em; align-items: center; }
+  .endgrid.two .end-l { grid-area: l; } .endgrid.two .end-r { grid-area: r; } .endgrid.two .end-more { grid-area: m; align-self: start; }
+  .endgrid.two .end-more { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 0.4em; }
+  .endgrid.two .end-more .ghost { margin-top: 0.3em; font-size: max(12px, 0.85em); padding: 0.3em 0.6em; } .endgrid.two .end-more .small { flex-basis: 100%; } .endgrid.two .end-more .small:empty { display: none; }
+  .endgrid.two .end-r .acts { display: flex; gap: 0.5em; align-items: stretch; } .endgrid.two .end-r .acts .go { flex: 1.7; } .endgrid.two .end-r .acts .ghost { flex: 1; margin-top: 0; padding: 0.3em 0.5em; }
+  .endgrid.two .end-r .blessings { margin: 0; }
+  .endgrid.two .end-r .go { margin-top: 0; }
+  .endgrid.two .ascpick { margin: 0.3em 0 0; }
+  .endgrid.two .stats { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 0.3em; } .endgrid.two .stats div { min-width: 0; }
+}
 /* short screens (a phone on its side): menus tighten up so the blessings and the main button fit with little scrolling */
 @media (max-height: 500px) {
   .card { padding: 0.7em 1.2em 1em; } .card .acts { margin: 0.2em -1.2em -1em; padding: 0.2em 1.2em 0.7em; }
