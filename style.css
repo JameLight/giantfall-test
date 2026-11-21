@@ -50,13 +50,14 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: #f3c9a8; fon
 .key .cd { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: rgba(47,36,31,.55); }
 .k-sunder { border-color: #a24a12; } .k-tether { border-color: #1a7c96; }
 .key.glow { background: #fff3c4; box-shadow: 0 0 0.8em var(--gold); animation: pulse .45s infinite alternate; }
+.key.k-light.glow { background: #e3fbff; border-color: #4fd8ff; box-shadow: 0 0 0.9em #4fd8ff; }
 
 /* combo */
 .combo { position: absolute; right: calc(var(--sr) + 1em); top: 38%; text-align: right; opacity: 0; transition: opacity .2s; color: #fff; text-shadow: 0 0.12em 0 var(--ink), 0 0 0.6em rgba(0,0,0,.3); }
 .combo.show { opacity: 1; }
 .combo b { font-size: 2.6em; font-weight: 900; } .combo span { display: block; font-weight: 800; letter-spacing: .15em; margin-top: -0.3em; }
 .combo em { display: block; font-style: normal; font-weight: 900; margin-top: 0.3em; animation: pop .5s; }
-.combo em.mix { color: #ffe07a; } .combo em.repeat { color: #ffb0a0; } .combo em.spent { color: #fff3c4; font-size: 1.2em; }
+.combo em.mix { color: #ffe07a; } .combo em.counter { color: #9ff0ff; font-size: 1.2em; } .combo em.repeat { color: #ffb0a0; } .combo em.spent { color: #fff3c4; font-size: 1.2em; }
 @keyframes pop { from { transform: scale(1.6); } to { transform: scale(1); } }
 
 /* banner, Elara, numbers, flash */
@@ -72,7 +73,9 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: #f3c9a8; fon
 .nums { position: absolute; inset: 0; overflow: hidden; }
 .num { position: absolute; left: 0; top: 0; font-weight: 900; color: #fff; text-shadow: 0 0.12em 0 var(--ink); font-size: 1.15em; white-space: nowrap; }
 .num.big { font-size: 2em; color: #ffe07a; } .num.down { color: #fff3c4; font-size: 1.4em; } .num.hurt { color: #ff8f7a; }
-.num.tag { font-size: max(12px, 0.95em); letter-spacing: .06em; } .num.cracked { color: #ffb36b; } .num.bound { color: #9ff0ff; } .num.perfect { color: #9ff0ff; font-size: 1.3em; }
+.num.tag { font-size: max(12px, 0.95em); letter-spacing: .06em; } .num.cracked { color: #ffb36b; } .num.bound { color: #9ff0ff; } .num.perfect { color: #9ff0ff; font-size: 1.3em; } .num.counter { color: #e8fdff; text-shadow: 0 0 0.5em #4fd8ff; }
+.num.counterdmg { color: #ffffff; font-size: 2.6em; text-shadow: 0 0 0.2em #12aee0, 0 0 0.6em #4fd8ff, 0 0.06em 0 #0a5f80; }
+.num.counterbig { color: #ffffff; font-size: 2.1em; letter-spacing: .05em; text-shadow: 0 0 0.25em #12aee0, 0 0 0.8em #4fd8ff, 0 0.08em 0 #0a5f80; }
 .flash { position: absolute; inset: 0; opacity: 0; mix-blend-mode: screen; }
 .pausebtn { position: absolute; top: var(--st); right: var(--sr); width: 2.8em; height: 2.8em; min-width: 44px; min-height: 44px; border-radius: 0.7em; border: 0.16em solid var(--ink); background: var(--cream); font-weight: 900; color: var(--ink); }
 
@@ -118,6 +121,7 @@ kbd { display: inline-block; min-width: 1.8em; padding: 0.05em 0.35em; margin-ri
 .tb-sunder { width: 4.4em; height: 4.4em; right: 7.6em; bottom: 0.2em; background: #ffd2b0; }
 .tb-tether { width: 4.4em; height: 4.4em; right: 7.2em; bottom: 5.6em; background: #c8f2ff; }
 .tb-breaker { width: 4.6em; height: 4.6em; right: 1.2em; bottom: 7.6em; background: #fff0c4; }
+.tb-light.glow { box-shadow: 0 0 0.9em #4fd8ff; animation: pulse .45s infinite alternate; }
 .tb-breaker.glow { box-shadow: 0 0 0.9em var(--gold); animation: pulse .45s infinite alternate; }
 .tb-dodge { width: 4em; height: 4em; right: 12.6em; bottom: 0.2em; background: #e9e0ff; }
 .touch-ui .hbar { bottom: auto; top: var(--st); width: 11em; }
