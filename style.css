@@ -204,3 +204,5 @@ html[lang="th"] .small { word-break: normal; line-break: auto; }
 .ascpick small { font-size: max(12px, 0.75em); color: #5b4a40; text-align: center; }
 .unlock { font-weight: 800; color: #9a5b00; margin: 0.5em 0 0; }
 .hbar .ascl { font-weight: 800; }
+.asclock { display: flex; align-items: center; justify-content: center; gap: 0.35em; margin: 0.5em 0; font-size: max(12px, 0.8em); font-weight: 700; color: #7a5a2a; }
+.asclock .ic { width: 1.2em; height: 1.2em; flex: none; }
