@@ -206,3 +206,14 @@ html[lang="th"] .small { word-break: normal; line-break: auto; }
 .hbar .ascl { font-weight: 800; }
 .asclock { display: flex; align-items: center; justify-content: center; gap: 0.35em; margin: 0.5em 0; font-size: max(12px, 0.8em); font-weight: 700; color: #7a5a2a; }
 .asclock .ic { width: 1.2em; height: 1.2em; flex: none; }
+
+/* Elara's blessings: two offered on the end screen after a loss, the taken one shown by the HP */
+.blessings { margin: 0.5em 0 0.6em; } .blessings > small { display: block; color: #5b4a40; font-size: max(12px, 0.75em); margin-top: 0.3em; }
+.bl-head { display: flex; align-items: center; justify-content: center; gap: 0.35em; margin: 0 0 0.4em; color: #6a3f96; } .bl-head .ic { width: 1.2em; height: 1.2em; color: #8a4fc0; }
+.bl-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5em; }
+.blessing { min-height: 44px; display: flex; flex-direction: column; align-items: center; gap: 0.25em; padding: 0.6em 0.5em; background: #f6eefc; border: 0.16em solid #7a4fa0; border-radius: 0.8em; color: var(--ink); }
+.blessing.on { background: #e6d3f7; box-shadow: 0 0 0.8em rgba(160,110,220,.8); }
+.blessing .bl-ic { color: #8a4fc0; font-style: normal; } .blessing .bl-ic .ic { width: 1.7em; height: 1.7em; }
+.blessing span { font-size: max(12px, 0.8em); line-height: 1.35; }
+.hbar .bless { color: #8a4fc0; font-weight: 800; } .hbar .bless .ic { width: 1em; height: 1em; vertical-align: -0.15em; margin-right: 0.15em; }
+.hbar.blessed .bar.mine { box-shadow: 0 0 0.6em rgba(170,120,230,.85); }
