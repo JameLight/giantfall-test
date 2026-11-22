@@ -583,3 +583,21 @@ body.modal-on .coach { visibility: hidden; }
 .ing.age2 { --rc: #a36ae6; } .ing.age3 { --rc: #f0a030; } .ing.age1 { --rc: #4ea4e6; }
 .belt { margin: 0.4em 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.3em; } .belt .btile { width: 2.6em; } .belt .btile.on { outline: 0.2em solid #2c8a3e; }
 .mealon { display: inline-flex; align-items: center; gap: 0.2em; padding: 0.1em 0.5em; border-radius: 0.6em; background: #fff1d6; }
+/* bag fixes: tiles never wider than their column; the kinds row never stretches; grids start at the top */
+.charw .ipane .bag { grid-template-columns: repeat(auto-fill, minmax(46px, 1fr)); align-content: start; overflow-x: hidden; }
+.charw .ipane .bag .btile { width: 100%; min-height: 0; }
+.charw .tbody > .kinds { flex: 0 0 auto; }
+.charw .tbody > * { flex-shrink: 0; } .charw .tbody > .ipane { flex: 1 1 auto; flex-shrink: 1; }
+/* reading a full bag: groups by kind, ▲ better than worn, weaker dimmed, 🔒 kept */
+.ghead { grid-column: 1 / -1; margin: 0.35em 0 0; font-size: max(12px, 0.8em); font-weight: 800; color: #6b5d4a; border-bottom: 0.08em solid #eadfca; }
+.btile.low { opacity: .45; filter: saturate(.5); } .btile.low.sel { opacity: 1; filter: none; }
+.btile .upm { position: absolute; right: 0.1em; top: 0; font-style: normal; font-weight: 900; color: #2c8a3e; font-size: max(12px, 0.75em); text-shadow: 0 0 0.2em #fff; }
+.btile .lockm { position: absolute; left: 0; bottom: 0; font-style: normal; font-size: max(12px, 0.7em); }
+.salvbar { display: flex; align-items: center; gap: 0.5em; margin-bottom: 0.3em; flex-wrap: wrap; } .salvbar .go, .salvbar .ghost { width: auto; margin: 0; padding: 0.25em 0.8em; min-height: 2.2em; }
+.salvbar > span { font-size: max(12px, 0.8em); }
+.charw .ipane .bag .btile { align-self: start; height: auto; aspect-ratio: 1 / 1; }
+.charw .ipane .bag { grid-auto-rows: auto; }
+.charw .ipane .bag .btile { height: 46px; aspect-ratio: auto; }   /* a ratio-only tile is not counted when the grid sizes its rows (rows came out 9 px) */
+/* the pop-up covers the whole right column (tabs included) so its words and buttons fit a short phone screen */
+.charw .cr { position: relative; } .charw .ipane { position: static; }
+.charw .ipane .idetail { top: 0; bottom: 0; }
