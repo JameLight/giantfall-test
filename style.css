@@ -505,3 +505,20 @@ body.modal-on .coach { visibility: hidden; }
 .savec .row .go { width: auto; flex: 0 0 auto; padding: 0.35em 1em; }
 .savec #sout .go { width: auto; margin-top: 0.3em; padding: 0.35em 1em; }
 @media (max-aspect-ratio: 1/1) { .savec .scols { grid-template-columns: 1fr; } }
+/* round painted skill pictures with a clock-wipe cooldown and the seconds left (the big action games' skill buttons) */
+.key { width: 5.2em; padding: 0; background: none; border: none; overflow: visible; }
+.kart { position: relative; display: block; width: 3.9em; height: 3.9em; margin: 0 auto; }
+.kart .sk { display: block; width: 100%; height: 100%; border-radius: 50%; border: 0.16em solid var(--ink); background: var(--cream); box-sizing: border-box; object-fit: cover; }
+.key .kart .cd { position: absolute; inset: 0; height: auto; border-radius: 50%; background: conic-gradient(rgba(20,14,10,.66) calc(var(--p, 0) * 360deg), transparent 0); display: grid; place-items: center; color: #fff; font: 900 1.15em var(--font); text-shadow: 0 0 0.3em #000; font-style: normal; }
+.kart kbd { position: absolute; left: -0.3em; top: -0.3em; z-index: 2; }
+.key b { color: #fff; text-shadow: 0 0.1em 0 var(--ink), 0 0 0.3em rgba(0,0,0,.6); margin-top: 0.2em; } .key small { color: #fff3dc; text-shadow: 0 0.08em 0 var(--ink); }
+.key.glow .kart .sk { box-shadow: 0 0 0.9em var(--gold), 0 0 0.3em var(--gold); } .k-light.glow .kart .sk { box-shadow: 0 0 0.9em #4fd8ff; }
+.tb { padding: 0; background: var(--cream); }
+.tb .sk { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.tb em { position: absolute; inset: 0; height: auto !important; border-radius: 50%; background: conic-gradient(rgba(20,14,10,.66) calc(var(--p, 0) * 360deg), transparent 0); display: grid; place-items: center; color: #fff; font: 900 1.2em var(--font); font-style: normal; text-shadow: 0 0 0.3em #000; z-index: 1; }
+.tb b { position: absolute; left: 50%; bottom: 6%; transform: translateX(-50%); z-index: 2; padding: 0 0.35em; border-radius: 0.5em; background: rgba(47,36,31,.72); color: #fff; white-space: nowrap; line-height: 1.25; }
+.tb-light b { bottom: 10%; }
+/* the powers held, as round buff pictures under the HP bar */
+.powers i { width: 2.4em; height: 2.4em; padding: 0; border-radius: 50%; overflow: hidden; font-size: 1em; background: var(--cream); }
+.powers i img { display: block; width: 100%; height: 100%; } .powers i.evo { border-color: #ff5a5a; box-shadow: 0 0 0.5em rgba(255,90,90,.8); }
+.keys .key.glow { background: none; box-shadow: none; animation: none; } .keys .key.glow .kart .sk { animation: pulse .45s infinite alternate; }
