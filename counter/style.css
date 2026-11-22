@@ -202,10 +202,16 @@ html[lang="th"] .chips i, html[lang="th"] .key small, html[lang="th"] .combo spa
 html[lang="th"] .small { word-break: normal; line-break: auto; }
 
 /* difficulty level picker (start and end screens) and the unlock note */
-.ascpick { display: flex; align-items: center; justify-content: center; gap: 0.5em; margin: 0.6em 0; }
-.ascpick button { min-width: 44px; min-height: 44px; padding: 0 0.6em; }
-.ascpick span { display: flex; flex-direction: column; align-items: center; min-width: 12em; }
-.ascpick small { font-size: max(12px, 0.75em); color: #5b4a40; text-align: center; }
+/* the level picker: ◀ Level n ▶ in one compact row (round arrows), its description under it across the full width */
+.ascpick { display: flex; flex-direction: column; align-items: center; gap: 0.2em; margin: 0.5em 0 0.7em; }
+.ascpick .asc-row { display: flex; align-items: center; justify-content: center; gap: 0.8em; }
+.ascpick button { width: 44px; height: 44px; min-width: 44px; min-height: 44px; padding: 0; margin: 0; border-radius: 50%; font-size: max(12px, 0.8em); }
+.ascpick b { font-size: 1.2em; min-width: 5.5em; }
+.ascpick small { font-size: max(12px, 0.75em); color: #5b4a40; text-align: center; max-width: 28em; line-height: 1.4; }
+/* the start card: the report buttons in their own row, apart from each other and from Begin */
+.startgrid .st-more { display: flex; justify-content: center; gap: 0.5em; margin-top: 0.6em; } .startgrid .st-more .ghost { flex: 1 1 0; margin-top: 0; padding: 0.35em 0.6em; font-size: max(12px, 0.85em); }
+.startgrid .st-foot { margin-bottom: 0; }
+.startgrid p, .ascpick small { text-wrap: balance; }   /* lines of even length: no lone word on the last line (Thai especially) */
 .unlock { font-weight: 800; color: #9a5b00; margin: 0.5em 0 0; }
 .hbar .ascl { font-weight: 800; }
 .asclock { display: flex; align-items: center; justify-content: center; gap: 0.35em; margin: 0.5em 0; font-size: max(12px, 0.8em); font-weight: 700; color: #7a5a2a; }
@@ -228,6 +234,9 @@ html[lang="th"] .small { word-break: normal; line-break: auto; }
   /* the four pause settings (sound, shake, effects, Elara) fit one row, so none sits under the Resume button */
   .row { flex-wrap: nowrap; gap: 0.35em; } .row button { font-size: max(12px, 0.8em); padding-left: 0.6em; padding-right: 0.6em; white-space: nowrap; }
   .card:has(.endgrid.two) { width: min(56em, 96vw); }
+  .card:has(.startgrid) { width: min(52em, 94vw); }
+  .startgrid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 0 1.6em; align-items: center; }
+  .startgrid .st-l h1 { font-size: 2.3em; } .startgrid .st-l .promise { margin-bottom: 0.6em; } .startgrid .ascpick { margin-top: 0; }
   .endgrid.two { display: grid; grid-template-columns: 1fr 1.15fr; grid-template-areas: "l r" "m r"; gap: 0 1.1em; align-items: center; }
   .endgrid.two .end-l { grid-area: l; } .endgrid.two .end-r { grid-area: r; } .endgrid.two .end-more { grid-area: m; align-self: start; }
   .endgrid.two .end-more { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 0.4em; }
