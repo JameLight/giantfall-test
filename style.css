@@ -37,7 +37,8 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: #f3c9a8; fon
 
 /* hero HP */
 .hbar { position: absolute; left: var(--sl); bottom: var(--sb); width: 15em; transition: opacity .3s; }
-.hbar .lab { font-weight: 800; color: #fff; text-shadow: 0 0.12em 0 var(--ink); margin-bottom: 0.2em; }
+.hbar .lab { font-weight: 800; color: #fff; text-shadow: 0 0.12em 0 var(--ink); margin-bottom: 0.2em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hbar .hrow { position: relative; }
 .bar.mine { height: 1.15em; } .bar.mine .fill { background: linear-gradient(#7fe08a, #3fa34d); }
 .hbar.low .bar.mine .fill { background: linear-gradient(#ff8f6b, #d8402f); animation: pulse .5s infinite alternate; }
 @keyframes pulse { to { filter: brightness(1.35); } }
@@ -226,7 +227,10 @@ html[lang="th"] .small { word-break: normal; line-break: auto; }
 .blessing.on { background: #e6d3f7; box-shadow: 0 0 0.8em rgba(160,110,220,.8); }
 .blessing .bl-ic { color: #8a4fc0; font-style: normal; } .blessing .bl-ic .ic { width: 1.7em; height: 1.7em; }
 .blessing span { font-size: max(12px, 0.8em); line-height: 1.35; }
-.hbar .bless { color: #8a4fc0; font-weight: 800; } .hbar .bless .ic { width: 1em; height: 1em; vertical-align: -0.15em; margin-right: 0.15em; }
+.hbar .bless { position: absolute; left: calc(100% + 0.4em); top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 1.7em; height: 1.7em; border-radius: 50%; background: #f4e9ff; border: 0.14em solid var(--ink); color: #8a4fc0; box-shadow: 0 0 0.5em rgba(170,120,230,.8); }
+.hbar .bless:empty { display: none; } .hbar .bless .ic { width: 1.1em; height: 1.1em; }
+.hbar .bless.used { background: #ddd6cc; color: #8a8378; box-shadow: none; filter: grayscale(1); }
+.hbar .bless.used::after { content: ''; position: absolute; left: 15%; right: 15%; top: 50%; height: 0.14em; background: var(--ink); transform: rotate(-45deg); }
 .hbar.blessed .bar.mine { box-shadow: 0 0 0.6em rgba(170,120,230,.85); }
 /* end screen: result on the left, Elara's blessings and the main button on the right when the screen is short and wide,
    so the blessings are read whole and the button sits under them instead of on top of them (a laptop's short window too) */
@@ -430,3 +434,4 @@ body.modal-on .coach { visibility: hidden; }
   .sheet2 { gap: 0.2em 0.5em; } .sheet2 .grp div { padding: 0.05em 0.35em; margin-bottom: 0.08em; } .stats5 .stat span { display: none; }
 }
 .charw .stats5 { margin-bottom: 0.5em; }
+.pbless small { display: block; flex-basis: 100%; font-size: max(12px, 0.8em); line-height: 1.4; margin-top: 0.25em; color: #5b4f40; } .pbless .pchip .ic { color: #8a4fc0; width: 1.3em; height: 1.3em; } .pbless .pchip.used { opacity: .6; }
