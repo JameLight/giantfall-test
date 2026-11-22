@@ -395,3 +395,22 @@ body.modal-on .coach { visibility: hidden; }
 .ptile, .btile { box-sizing: border-box; }
 @media (max-height: 460px) { .tbody { max-height: 62vh; max-height: 62dvh; } .bag { grid-template-columns: repeat(auto-fill, minmax(2.9em, 1fr)); gap: 0.25em; } .idetail .item { padding: 0.3em 0.4em; } .idetail .ic.big { width: 2.4em; height: 2.4em; } .cl .small { margin: 0.1em 0; } }
 .ptile { font: inherit; }   /* a button does not inherit the font size: its em would not match the doll it sits on */
+
+/* the skill map: four branches side by side, round stones joined by lines; the chosen stone is told about beside it */
+.swrap { display: grid; grid-template-columns: auto 1fr; gap: 0.8em; align-items: start; margin-bottom: 0.5em; }
+.smap { display: grid; grid-template-columns: repeat(4, 4.2em); gap: 0.2em; }
+.scol { display: flex; flex-direction: column; align-items: center; gap: 0.45em; } .scol > b { font-size: max(12px, 0.75em); white-space: nowrap; }
+.sdot { position: relative; width: 2.5em; height: 2.5em; padding: 0.15em; border-radius: 50%; border: 0.16em solid #b8a88c; background: #f4ecdc; font: inherit; }
+.sdot .ic { width: 100%; height: 100%; filter: grayscale(1) opacity(.45); }
+.sdot em { position: absolute; right: -0.35em; bottom: -0.3em; min-width: 1.2em; padding: 0 0.2em; border-radius: 0.6em; background: var(--ink); color: var(--cream); font-style: normal; font-weight: 900; font-size: max(11px, 0.65em); line-height: 1.4em; }
+.sdot.big { width: 3em; height: 3em; } .sdot.open { border-color: var(--bc); background: #fffaf0; } .sdot.open .ic { filter: none; opacity: .8; }
+.sdot.taken { border-color: var(--bc); background: #fff0c4; box-shadow: 0 0 0.6em var(--bc); } .sdot.taken .ic { filter: none; } .sdot.taken em { background: #2c8a3e; }
+.sdot.sel { outline: 0.18em solid var(--ink); outline-offset: 0.12em; }
+.scol > .sdot:not(:first-of-type)::before, .sfork::before { content: ''; position: absolute; left: 50%; top: -0.62em; width: 0.18em; height: 0.48em; background: #b8a88c; transform: translateX(-50%); }
+.scol > .sdot.taken::before { background: #f0a030; }
+.sfork { position: relative; display: flex; gap: 0.25em; } .sfork .sdot { width: 2em; height: 2em; }
+.sdet { display: flex; flex-direction: column; gap: 0.3em; text-align: left; padding: 0.6em 0.7em; border: 0.14em solid var(--ink); border-radius: 0.7em; background: #fffaf0; }
+.sdet.hint { border-style: dashed; color: #8a7d68; font-size: max(12px, 0.85em); text-align: center; }
+@media (max-height: 460px) { .smap { grid-template-columns: repeat(4, 3.6em); } .scol { gap: 0.35em; } .sdot { width: 2.1em; height: 2.1em; } .sdot.big { width: 2.5em; height: 2.5em; } .sfork .sdot { width: 1.75em; height: 1.75em; }
+  .sheet { grid-template-columns: 1fr 1fr; gap: 0.2em 0.5em; } .sheet div { padding: 0.15em 0.4em; } .charw .stats3 { margin-bottom: 0.3em; } }
+.sside { display: flex; flex-direction: column; gap: 0.4em; } .sside .ghost { margin-top: 0; }
