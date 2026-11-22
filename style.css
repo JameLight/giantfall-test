@@ -56,6 +56,8 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: #f3c9a8; fon
 /* combo */
 .combo { position: absolute; right: calc(var(--sr) + 1em); top: 38%; text-align: right; opacity: 0; transition: opacity .2s; color: #fff; text-shadow: 0 0.12em 0 var(--ink), 0 0 0.6em rgba(0,0,0,.3); }
 .combo.show { opacity: 1; }
+/* touch screens: up beside the pause button, clear of the skill buttons (at 38% it sat under Break on a phone on its side) */
+.touch-ui .combo { top: var(--st); right: calc(var(--sr) + max(44px, 2.8em) + 0.8em); }   /* beside the pause button, the top row */
 .combo b { font-size: 2.6em; font-weight: 900; } .combo span { display: block; font-weight: 800; letter-spacing: .15em; margin-top: -0.3em; }
 .combo em { display: block; font-style: normal; font-weight: 900; margin-top: 0.3em; animation: pop .5s; }
 .combo em.mix { color: #ffe07a; } .combo em.counter { color: #9ff0ff; font-size: 1.2em; } .combo em.repeat { color: #ffb0a0; } .combo em.spent { color: #fff3c4; font-size: 1.2em; }
