@@ -116,7 +116,7 @@ kbd { display: inline-block; min-width: 1.8em; padding: 0.05em 0.35em; margin-ri
 .tbase { opacity: .7; transition: opacity .15s; } .tbase.on { opacity: 1; transition: none; }
 .tknob { position: absolute; left: 50%; top: 50%; width: 5em; height: 5em; margin: -2.5em 0 0 -2.5em; border-radius: 50%; background: var(--cream); border: 0.2em solid var(--ink); }
 .tbtns { position: absolute; right: var(--sr); bottom: var(--sb); width: 16em; height: 13em; pointer-events: none; }
-.tb { position: absolute; min-width: 48px; min-height: 48px; border-radius: 50%; border: 0.2em solid var(--ink); background: var(--cream); color: var(--ink); font-weight: 900; pointer-events: auto; overflow: hidden; touch-action: none; }
+.tb { font-size: inherit; position: absolute; min-width: 48px; min-height: 48px; border-radius: 50%; border: 0.2em solid var(--ink); background: var(--cream); color: var(--ink); font-weight: 900; pointer-events: auto; overflow: hidden; touch-action: none; }
 .tb b { position: relative; z-index: 1; font-size: max(12px, 0.9em); } .tb em { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: rgba(47,36,31,.5); }
 .tb { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.05em; padding: 0; }
 .tb .ic { position: relative; z-index: 1; width: 44%; height: 44%; } .tb b { line-height: 1; }
@@ -129,7 +129,11 @@ kbd { display: inline-block; min-width: 1.8em; padding: 0.05em 0.35em; margin-ri
 .tb-breaker { width: 4.6em; height: 4.6em; right: 1.2em; bottom: 7.6em; background: #fff0c4; }
 .tb-light.glow { box-shadow: 0 0 0.9em #4fd8ff; animation: pulse .45s infinite alternate; }
 .tb-breaker.glow { box-shadow: 0 0 0.9em var(--gold); animation: pulse .45s infinite alternate; }
-.tb-dodge { width: 4em; height: 4em; right: 12.6em; bottom: 0.2em; background: #e9e0ff; }
+.tb-dodge { width: 4.4em; height: 4.4em; right: 12.6em; bottom: 0.2em; background: #e9e0ff; }
+/* a phone: the whole cluster a quarter larger (Strike ~110 px, skills and Roll ~66 px on an iPhone held sideways),
+   the size class of the big mobile action games; testers asked for bigger buttons */
+@media (min-aspect-ratio: 1/1) { .touch-ui .tbtns { font-size: 1.1em; } }
+@media (min-aspect-ratio: 1/1) and (min-height: 340px) { .touch-ui .tbtns { font-size: 1.25em; } }   /* a very short screen (Safari's bars showing) keeps the old size */
 .touch-ui .hbar { bottom: auto; top: var(--st); width: 11em; }
 @media (max-aspect-ratio: 1/1) { .touch-ui .tbtns { font-size: min(1em, 3.3vw); } .gbar { width: 88vw; top: calc(var(--st) + 3.4em); } .touch-ui .gbar { top: calc(var(--st) + 6.4em); } .banner { top: 30%; } .touch-ui .hbar { top: var(--st); } .combo { top: 30%; } }
 .hide { display: none !important; }
