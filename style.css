@@ -322,3 +322,16 @@ body.modal-on .combo { visibility: hidden; }
 
 .rpill { padding: 0 0.45em; border-radius: 0.4em; color: var(--ink); }
 .own.miss { min-height: 44px; padding: 0.2em 0.5em; font-size: max(12px, 0.8em); border-width: 0.2em; }
+
+/* painted icons (art/icons, cut from sheets by tools/icon-slice.mjs) */
+.ic { width: 1.6em; height: 1.6em; vertical-align: -0.45em; object-fit: contain; pointer-events: none; }
+.ic.s { width: 1.4em; height: 1.4em; margin-right: 0.15em; } .ic.h { width: 1.5em; height: 1.5em; margin-right: 0.25em; }
+.ic.big { width: 3.4em; height: 3.4em; align-self: center; filter: drop-shadow(0 0.1em 0.15em rgba(60,30,10,.25)); }
+.ic.huge { width: 6em; height: 6em; filter: drop-shadow(0 0.15em 0.3em rgba(60,30,10,.3)); }
+.ic.emb { width: 3em; height: 3em; align-self: center; }
+.ic.shadow { filter: brightness(0) opacity(.35); }
+.hubb { display: flex; flex-direction: column; align-items: center; gap: 0.1em; } .hubb .ic { width: 2.2em; height: 2.2em; }
+.chestbig { text-align: center; } .chest .reveal { text-align: center; }
+.item { align-items: stretch; } .item > b, .item > small, .item > span { text-align: center; }
+@media (max-height: 460px) { .hubb .ic { width: 2.3em; height: 2.3em; } .ic.big { width: 2.6em; height: 2.6em; } .ic.emb { width: 2.2em; height: 2.2em; } .ic.huge { width: 4em; height: 4em; } }
+.chest .pick .ic.big { width: 4.6em; height: 4.6em; }
