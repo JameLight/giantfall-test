@@ -653,3 +653,27 @@ body.modal-on .coach { visibility: hidden; }
 .charw .tcard { min-height: 44px; padding: 0.2em 0.4em; border: 0.16em solid var(--rc); border-radius: 0.5em; background: #fffaf0; text-align: left; }
 .charw .tcard b { display: block; font-size: max(12px, 0.82em); } .charw .tcard small { font-size: 12px; color: var(--rc); font-weight: 800; }
 .charw .tkept { display: flex; flex-wrap: wrap; gap: 0.25em; margin: 0.2em 0 0.4em; } .charw .tchip { padding: 0.05em 0.45em; border-radius: 0.4em; border: 0.12em solid var(--rc); background: #fffaf0; font-size: 12px; }
+/* the Tower Ledger: the land's floors, then the ways in as cards */
+.town .ledger { margin-top: 0.2em; } .town .lstrip { display: flex; gap: 0.25em; margin-bottom: 0.3em; }
+.town .lstrip i { font-style: normal; min-width: 1.9em; height: 1.9em; display: grid; place-items: center; border-radius: 50%; border: 0.14em solid #c8bfae; font-weight: 800; font-size: max(12px, 0.78em); color: #8a7d68; background: #fffaf0; }
+.town .lstrip i.done { background: #e6d6b0; color: var(--ink); } .town .lstrip i.now { border-color: var(--ink); background: #ffe7a0; color: var(--ink); } .town .lstrip i.boss { color: #b8650a; }
+.town .doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(7.5em, 1fr)); gap: 0.35em; }
+.town .door { position: relative; min-height: 44px; padding: 0.3em 0.45em; text-align: left; border: 0.16em solid #c8bfae; border-radius: 0.55em; background: #fffaf0; line-height: 1.3; }
+.town .door b { display: block; font-size: max(12px, 0.85em); } .town .door span { display: block; font-size: 12px; color: #6a5d48; }
+.town .door em { display: flex; align-items: center; gap: 0.25em; font-style: normal; font-size: 12px; font-weight: 800; margin-top: 0.15em; }
+.town .door.on { border-color: var(--ink); background: #fff0c4; } .town .door.skull { border-color: #d0342c; } .town .door.skull.on { background: #ffe1d8; }
+.town .door .danger { position: absolute; top: 0.2em; right: 0.35em; font-size: 12px; font-weight: 800; color: #d0342c; } .town .door.warden b { color: #b8650a; }
+/* Elara in town; the tower book: tabs, contracts, the Songbook */
+.town .elara { margin: 0.1em 0 0.3em; padding: 0.3em 0.5em; border-left: 0.25em solid #a36ae6; background: #f6f0ff; border-radius: 0.3em; font-size: max(12px, 0.82em); line-height: 1.4; }
+.town .elara b { color: #6a3fb0; margin-right: 0.3em; }
+.mtabs { display: flex; gap: 0.3em; margin: 0.2em 0 0.4em; } .mtabs .tab { min-height: 44px; }
+.clist { display: grid; gap: 0.3em; } .crow { display: grid; grid-template-columns: 1fr 6em auto; align-items: center; gap: 0.4em; padding: 0.3em 0.5em; border: 0.14em solid #c8bfae; border-radius: 0.5em; background: #fffaf0; font-size: max(12px, 0.85em); }
+.cbar { position: relative; height: 0.55em; background: #e8e0d0; border-radius: 0.3em; overflow: hidden; } .cbar i { position: absolute; inset: 0 auto 0 0; background: linear-gradient(90deg, #ffd77a, #e09a18); }
+.book { display: grid; grid-template-columns: minmax(9em, 1fr) 1.4fr; gap: 0.6em; max-height: 52vh; max-height: 52dvh; } .blist { overflow: auto; }
+.blist .bk { margin: 0.3em 0 0.1em; font-weight: 800; font-size: 12px; color: #6a5d48; }
+.bpage { display: flex; justify-content: space-between; width: 100%; min-height: 32px; padding: 0.15em 0.4em; text-align: left; border: 0; border-radius: 0.35em; background: transparent; font-size: max(12px, 0.82em); }
+.bpage.on { background: #fff0c4; } .bpage.unseen { color: #a0927c; } .bpage i { font-style: normal; color: #e09a18; letter-spacing: -0.05em; }
+.bread { overflow: auto; padding: 0.3em 0.6em; border: 0.14em solid #c8bfae; border-radius: 0.5em; background: #fffaf0; } .bread h3 { margin: 0.1em 0; }
+.btip { font-size: max(12px, 0.85em); } .bverse { font-style: italic; color: #6a3fb0; font-size: max(12px, 0.9em); }
+.book { height: min(52dvh, 16em); max-height: none; overflow: hidden; } .book .blist, .book .bread { min-height: 0; max-height: 100%; overflow: auto; }
+@media (max-height: 460px) { .book { height: calc(100dvh - 12.5em); min-height: 7em; } .mtabs .tab { min-height: 40px; padding-top: 0.1em; padding-bottom: 0.1em; } }
