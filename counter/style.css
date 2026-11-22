@@ -254,3 +254,18 @@ html[lang="th"] .small { word-break: normal; line-break: auto; }
   .card h2 { font-size: 1.35em; margin: 0 0 0.2em; } .card h1 { font-size: 2.2em; }
   .runbar { margin: 0.1em auto 0.4em; } .stats { margin: 0 0 0.3em; gap: 0.8em; } .stats b { font-size: 1.15em; }
 }
+
+/* the tower: skills not taught yet leave the HUD and the touch buttons */
+body.lock-sunder .k-sunder, body.lock-sunder .tb-sunder, body.lock-tether .k-tether, body.lock-tether .tb-tether, body.lock-breaker .k-breaker, body.lock-breaker .tb-breaker { display: none; }
+.num.shard { color: #b9e6ff; font-size: 0.95em; }
+/* the town at the start of every tower floor */
+.town h2 small { font-size: 0.6em; font-weight: 700; opacity: .75; }
+.town .t-head { margin: 0.7em 0 0.2em; font-size: max(13px, 0.95em); }
+.town .shards { color: #1f6f9a; font-variant-numeric: tabular-nums; }
+.forges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5em; margin-bottom: 0.9em; }
+.forge { min-height: 44px; display: flex; flex-direction: column; gap: 0.2em; align-items: center; padding: 0.55em 0.4em; background: #eef7ff; border: 0.16em solid var(--ink); border-radius: 0.8em; color: var(--ink); text-align: center; }
+.forge span { font-size: max(12px, 0.8em); } .forge em { font-style: normal; font-weight: 800; font-size: max(12px, 0.85em); color: #1f6f9a; }
+.forge.off { opacity: .55; } .forge:disabled { opacity: .45; }
+.town .go:disabled { opacity: .6; }
+@media (max-height: 460px) { .town .cards, .town .forges { gap: 0.35em; } .town .pcard { padding: 0.45em 0.4em; } .town .pcard span { line-height: 1.2; } .forge { padding: 0.3em 0.3em; gap: 0; } .town h2 { margin: 0; } }
+body.modal-on .combo { visibility: hidden; }
