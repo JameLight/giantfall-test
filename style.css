@@ -335,3 +335,24 @@ body.modal-on .combo { visibility: hidden; }
 .item { align-items: stretch; } .item > b, .item > small, .item > span { text-align: center; }
 @media (max-height: 460px) { .hubb .ic { width: 2.3em; height: 2.3em; } .ic.big { width: 2.6em; height: 2.6em; } .ic.emb { width: 2.2em; height: 2.2em; } .ic.huge { width: 4em; height: 4em; } }
 .chest .pick .ic.big { width: 4.6em; height: 4.6em; }
+
+/* the town: two halves on a wide screen (who I am + the four doors | the power cards); one under the other elsewhere */
+.tgrid .hub { grid-template-columns: repeat(2, 1fr); }
+.tgrid .keepnote { margin: 0; }
+.cards3 { grid-template-columns: repeat(3, 1fr); }
+.pcard .cpic { display: block; } .pcard .ic.cardic { width: 4.4em; height: 4.4em; } .cdetail .ic.cardic { width: 3.2em; height: 3.2em; }
+.pcard.sel { background: #fff0c4; outline: 0.2em solid #f0a030; transform: translateY(-2px); }
+.cdetail { display: flex; gap: 0.6em; align-items: center; text-align: left; min-height: 4.2em; margin: 0.5em 0 0.9em; padding: 0.5em 0.7em; border: 0.14em dashed var(--ink); border-radius: 0.7em; background: #fffaf0; }
+.cdetail b { display: block; } .cdetail span { font-size: max(12px, 0.85em); line-height: 1.35; } .cdetail.hint { justify-content: center; color: #8a7d68; font-size: max(12px, 0.85em); }
+.mats .ic { margin-left: 0.3em; }
+body.modal-on .coach { visibility: hidden; }
+@media (min-aspect-ratio: 4/3) {
+  .card:has(.tgrid) { width: min(56em, 96vw); }
+  .tgrid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 0 1.2em; align-items: start; }
+  .tgrid .tl { text-align: left; } .tgrid .tl .grow { margin-top: 0.2em; }
+}
+@media (max-height: 460px) and (min-aspect-ratio: 4/3) {
+  .tgrid h2 { font-size: 1.2em; } .tgrid .unlock { font-size: max(12px, 0.8em); margin: 0.2em 0; }
+  .tgrid .hub { margin: 0.4em 0; } .tgrid .hubb { min-height: 44px; padding: 0.25em; flex-direction: row; justify-content: center; gap: 0.3em; }
+  .pcard { padding: 0.3em 0.3em; gap: 0.1em; } .pcard .ic.cardic { width: 3.4em; height: 3.4em; } .pcard kbd { display: none; } .cdetail { margin: 0.35em 0 0.6em; min-height: 3.6em; }
+}
