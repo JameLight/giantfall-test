@@ -137,6 +137,7 @@ kbd { display: inline-block; min-width: 1.8em; padding: 0.05em 0.35em; margin-ri
 .prog i { width: 0.8em; height: 0.8em; border-radius: 50%; border: 0.13em solid var(--ink); background: #fff; }
 .prog i.s-pick { border-radius: 0.15em; transform: rotate(45deg) scale(.8); }
 .prog i.s-giant { width: 1.15em; height: 1.15em; }
+.prog .floor { font-weight: 900; font-size: max(12px, 0.8em); margin-right: 0.2em; white-space: nowrap; } .prog i.hide { display: none; }   /* the tower: "Floor n/25", then the current stretch's dots */
 .prog i.done { background: var(--gold); } .prog i.now { background: var(--red); box-shadow: 0 0 0.5em var(--red); }
 .touch-ui .prog { top: calc(var(--st) + 3.6em); }
 /* power cards */
