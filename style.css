@@ -677,3 +677,21 @@ body.modal-on .coach { visibility: hidden; }
 .btip { font-size: max(12px, 0.85em); } .bverse { font-style: italic; color: #6a3fb0; font-size: max(12px, 0.9em); }
 .book { height: min(52dvh, 16em); max-height: none; overflow: hidden; } .book .blist, .book .bread { min-height: 0; max-height: 100%; overflow: auto; }
 @media (max-height: 460px) { .book { height: calc(100dvh - 12.5em); min-height: 7em; } .mtabs .tab { min-height: 40px; padding-top: 0.1em; padding-bottom: 0.1em; } }
+/* the roster: 25 faces in job order, the chosen one read beside the grid */
+.charw .rwrap { display: grid; grid-template-columns: 1fr minmax(10.5em, 34%); gap: 0.45em; align-items: start; }
+.charw .rgrid2 { display: grid; grid-template-columns: repeat(8, minmax(40px, 1fr)); gap: 0.25em; }
+/* four faces per job: two jobs to a row, a wider gap between them */
+.charw .rgrid2 .rtile:nth-child(8n+4) { margin-right: 0.4em; }
+.charw .rtile { position: relative; aspect-ratio: 1; min-height: 44px; padding: 0; border: 0.14em solid #c8bfae; border-radius: 0.45em; background: #fff; overflow: hidden; }
+.charw .rtile .rpic { width: 100%; height: 100%; object-fit: cover; display: block; }
+.charw .rtile.sel { border-color: var(--ink); box-shadow: 0 0 0 0.12em #ffd36b; } .charw .rtile.on { border-color: #2c8a3e; }
+.charw .rtile.lock .rpic { filter: grayscale(1) brightness(0.8); opacity: 0.7; } .charw .rtile.soon:not(.lock) .rpic { opacity: 0.75; }
+.charw .rtile .rnow { position: absolute; right: 0.1em; bottom: 0.1em; font-style: normal; font-size: 12px; font-weight: 800; color: #fff; background: #2c8a3e; border-radius: 50%; width: 1.4em; height: 1.4em; display: grid; place-items: center; }
+.charw .rdet2 { display: flex; flex-direction: column; align-items: center; gap: 0.15em; text-align: center; padding: 0.35em; border: 0.14em solid #c8bfae; border-radius: 0.6em; background: #fffaf0; }
+.charw .rdet2 .rbig { width: 5.2em; height: 5.2em; border-radius: 0.5em; object-fit: cover; background: #fff; }
+.charw .rdet2 b { font-size: max(13px, 0.95em); line-height: 1.3; } .charw .rdet2 small { font-size: 12px; color: #6a5d48; line-height: 1.3; }
+.charw .rdet2 .rpas { margin: 0.15em 0; font-size: max(12px, 0.82em); font-weight: 700; color: #6a3fb0; line-height: 1.4; }
+.charw .rdet2 .rsws { display: flex; gap: 0.35em; margin: 0.15em 0; }
+.charw .rsw { width: 30px; height: 30px; min-height: 30px; padding: 0; border-radius: 50%; border: 0.16em solid #c8bfae; background: var(--sw); }
+.charw .rsw.on { border-color: var(--ink); box-shadow: 0 0 0 0.12em #ffd36b; } .charw .rsw:disabled { opacity: 0.5; }
+.charw .rdet2 .go { width: 100%; } .charw .rdet2 .rcur { color: #2c8a3e; font-weight: 800; }
