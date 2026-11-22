@@ -23,7 +23,7 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: #f3c9a8; fon
 .gname b { font-size: 1.25em; } .gname span { font-weight: 600; opacity: .95; margin-left: .6em; font-size: max(12px, .85em); }
 .bar { position: relative; height: 1.05em; background: rgba(47,36,31,.55); border: 0.16em solid var(--ink); border-radius: 0.6em; overflow: hidden; }
 .bar i { position: absolute; inset: 0 auto 0 0; width: 100%; }
-.bar.hp .fill { background: linear-gradient(#e9614f, #b8321f); } .bar .trail { background: #fff0c8; }
+.bar.hp .fill { background: linear-gradient(#e9614f, #b8321f); } .bar.hp .hpn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-style: normal; font-size: max(12px, 0.62em); line-height: 1.3; font-weight: 800; color: #fff; text-shadow: 0 0.1em 0 var(--ink); font-variant-numeric: tabular-nums; } .bar.hp { height: max(21px, 1.35em); } .bar .trail { background: #fff0c8; }
 .bar.bal { height: max(15px, 1em); margin-top: 0.3em; }
 .bar.bal .fill { background: linear-gradient(#ffd77a, #e09a18); transition: width .08s; }
 .bar.bal em { position: absolute; inset: 0; font-style: normal; font-size: max(12px, 0.68em); line-height: max(12px, 1.25em); font-weight: 800; letter-spacing: .14em; color: #fff; text-shadow: 0 0.1em 0 var(--ink); }
@@ -383,7 +383,7 @@ body.modal-on .coach { visibility: hidden; }
 .bag { display: grid; grid-template-columns: repeat(auto-fill, minmax(3.4em, 1fr)); gap: 0.35em; margin-bottom: 0.5em; }
 .btile { position: relative; aspect-ratio: 1; min-height: 44px; padding: 0.2em; border: 0.18em solid var(--rc); border-radius: 0.6em; background: #fffaf0; }
 .btile .ic { width: 100%; height: 100%; } .btile em { position: absolute; right: 0.15em; bottom: 0; font-style: normal; font-weight: 900; font-size: max(12px, 0.7em); }
-.btile.miss { background: #eee8dc; border-style: dashed; } .btile.on::after { content: '✓'; position: absolute; left: 0.2em; top: 0; font-weight: 900; color: #2c8a3e; }
+.btile.miss { background: #eee8dc; border-style: dashed; } .btile.gone { background: #f4efe4; } .btile.gone .ic { opacity: .55; } .btile.on::after { content: '✓'; position: absolute; left: 0.2em; top: 0; font-weight: 900; color: #2c8a3e; }
 .btile.sel { outline: 0.2em solid #f0a030; transform: translateY(-2px); }
 .idetail { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5em; align-items: start; margin-bottom: 0.4em; } .idetail.hint { display: block; color: #8a7d68; font-size: max(12px, 0.85em); text-align: center; padding: 0.6em; border: 0.14em dashed #c8bfae; border-radius: 0.6em; }
 .iacts { display: flex; flex-direction: column; gap: 0.35em; } .cmp { margin: 0; font-weight: 800; } .cmp.up { color: #2c8a3e; } .cmp.down { color: #c0392b; }
@@ -601,3 +601,12 @@ body.modal-on .coach { visibility: hidden; }
 /* the pop-up covers the whole right column (tabs included) so its words and buttons fit a short phone screen */
 .charw .cr { position: relative; } .charw .ipane { position: static; }
 .charw .ipane .idetail { top: 0; bottom: 0; }
+.sreset { display: block; margin: 0.4em auto 0; min-height: 44px; }
+.num.gh { font-size: 1.55em; color: #fff6dc; letter-spacing: .02em; } .num.down.gh { font-size: 1.8em; color: #fff3c4; } .num.gh.crit { font-size: 2.1em; } .num.big:not(.counterdmg) { font-size: 2.3em; } .num.big.crit:not(.counterdmg) { font-size: 2.6em; }
+.charw .robag { display: flex; gap: 0.4em; flex: 1 1 auto; min-height: 0; }
+.charw .rotabs { display: flex; flex-direction: column; gap: 0.25em; flex: 0 0 auto; width: 4.6em; }
+.charw .rotabs .cat { min-height: 44px; padding: 0.2em 0.3em; white-space: normal; line-height: 1.2; font-size: max(12px, 0.85em); }
+.charw .romain { flex: 1 1 auto; min-width: 0; min-height: 0; display: flex; flex-direction: column; }
+.charw .romain > .kinds { flex: 0 0 auto; } .charw .romain > .ipane { flex: 1 1 auto; min-height: 0; }
+.bhead .ctool { display: inline-flex; align-items: center; gap: 0.25em; }
+.btile.pot.on::after { content: 'Q'; position: absolute; left: 0.2em; top: 0; font-weight: 900; color: #2c8a3e; }
