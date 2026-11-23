@@ -909,3 +909,18 @@ body.world:not(.touch-ui) .keys .key small { display: none; }
 /* a computer: the level badge stays on the friend's circle; the health number stays in the frame's line (room there) */
 body:not(.touch-ui) .pm b { right: auto; left: 1.75em; top: -0.3em; }
 body:not(.touch-ui) .hbar.grow .lab .hpw { position: static; display: inline-flex; height: auto; font-size: inherit; margin-left: 0.4em; }
+/* ---- the hero sheet: eleven tabs as a rail down the side (more than ~7 sections: a side rail, not a top row) ---- */
+.charw .cr { display: grid; grid-template-columns: 5.6em minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); gap: 0.35em 0.5em; }
+.charw .ctop { display: contents; }
+.charw .ctop .tabs { grid-column: 1; grid-row: 1 / span 2; flex-direction: column; gap: 0.3em; overflow-y: auto; overscroll-behavior: contain; padding: 0.35em 0.35em 0.35em 0; margin: 0; min-height: 0; }
+.charw .tabs .tab { flex: 0 0 auto; min-height: 44px; padding: 0.3em 0.3em; font-size: max(12px, 0.85em); line-height: 1.2; }
+.charw .xclose { grid-column: 2; grid-row: 1; justify-self: end; }
+.charw .tbody { grid-column: 2; grid-row: 2; }
+/* ---- the world's bar keeps out of the phone's camera island and rounded corners (safe areas) ---- */
+#wbar .wmini { right: var(--sr); }
+@media (max-height: 460px) { #wbar .wmini { right: calc(var(--sr) + 3.6em); } }
+.touch-ui #wbar .wbtns { right: calc(var(--sr) + 3.6em + 112px); }
+@media (max-height: 460px) { .touch-ui #wbar .wbtns { right: calc(var(--sr) + 3.6em + 88px); } }
+body:not(.touch-ui) #wbar .wbtns { right: var(--sr); }
+/* the sheet keeps out of the camera island too (the CrazyGames SDK's safe area as well as the browser's) */
+.modal:has(.charw) { padding-left: var(--sl); padding-right: var(--sr); }
