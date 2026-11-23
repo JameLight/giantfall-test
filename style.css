@@ -788,3 +788,16 @@ body.townview .tpad, body.townview .tbtns, body.townview .keys, body.townview .h
 /* the bar and the sheet always above the plot chips (many buildings put a chip where the Back button is) */
 #townui .tbubs { z-index: 3; } .townbar { z-index: 5; } .tsheet { z-index: 6; }
 #townui:has(.tsheet) .tchips { visibility: hidden; }   /* the sheet open: the chips step aside */
+/* the world (design/g5/WORLD.md): the minimap and the town's menus, the gates' names */
+#wbar { position: fixed; inset: 0; pointer-events: none; z-index: 20; }
+#wbar .wmini { position: absolute; right: 0.6em; top: 3.6em; display: flex; flex-direction: column; align-items: center; gap: 0.15em; pointer-events: none; }
+#wbar .wmini canvas { width: 104px; height: 104px; border: 0.14em solid var(--ink); border-radius: 0.6em; background: rgba(40,30,25,.4); }
+#wbar .wmini b { font-size: 12px; color: #fff8ea; text-shadow: 0 1px 2px #000, 0 0 4px #000; }
+#wbar .wbtns { position: absolute; left: 0.6em; top: 6.4em; display: flex; flex-direction: column; gap: 0.35em; pointer-events: auto; }
+#wbar .wbtns .hubb { flex-direction: row; gap: 0.3em; min-height: 44px; padding: 0.2em 0.6em; font-size: 0.85em; }
+#wbar .wbtns .hubb .ic { width: 1.6em; height: 1.6em; }
+#wbar .wgates { position: absolute; inset: 0; }
+.wgate { position: absolute; left: 0; top: 0; padding: 0.2em 0.55em; border-radius: 0.6em; background: rgba(58,43,37,.8); color: #ffe08a; font-weight: 800; font-size: 0.85em; white-space: nowrap; }
+body.world .prog { display: none; }
+@media (max-height: 460px) { #wbar .wmini { top: 0.4em; right: 4.2em; } #wbar .wmini canvas { width: 76px; height: 76px; } #wbar .wbtns { top: 4.2em; } #wbar .wbtns .hubb { min-height: 38px; } }
+@media (max-height: 460px) { #wbar .wbtns { top: 3.4em; flex-direction: row; } #wbar .wbtns .hubb { padding: 0.15em 0.45em; } }
