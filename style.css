@@ -695,3 +695,28 @@ body.modal-on .coach { visibility: hidden; }
 .charw .rsw { width: 30px; height: 30px; min-height: 30px; padding: 0; border-radius: 50%; border: 0.16em solid #c8bfae; background: var(--sw); }
 .charw .rsw.on { border-color: var(--ink); box-shadow: 0 0 0 0.12em #ffd36b; } .charw .rsw:disabled { opacity: 0.5; }
 .charw .rdet2 .go { width: 100%; } .charw .rdet2 .rcur { color: #2c8a3e; font-weight: 800; }
+/* the town's other people (data/story.json people, rival) under Elara's line */
+.town .person { margin: 0 0 0.3em; padding: 0.25em 0.5em; border-left: 0.25em solid #b08a4e; background: #fbf5ea; border-radius: 0.3em; font-size: max(12px, 0.8em); line-height: 1.4; }
+.town .person b { color: #7a5420; margin-right: 0.3em; }
+.town .person.rival { border-left-color: #c0573e; background: #fdf0ec; }
+.town .person.rival b { color: #a03a24; }
+/* a giant speaking in the fight (data/story.json barks) */
+.coach.giant { border-color: #8a8f99; }
+.coach.giant b { color: #4c5562; letter-spacing: 0.04em; }
+/* playing together: the QR code beside the steps (main.js coopHost / coopJoin) */
+.coop h2 { margin-top: 0; }
+.coop .cgrid { display: grid; grid-template-columns: auto 1fr; gap: 0.8em; align-items: start; }
+.coop .cgrid > div:last-child { max-height: 70dvh; overflow-y: auto; }
+.coop .cgrid p { margin: 0 0 0.35em; font-size: max(12px, 0.85em); line-height: 1.35; }
+.coop .cgrid .acts { display: flex; flex-wrap: wrap; gap: 0.4em; }
+.coop .cgrid .acts { margin: 0.2em 0 0; }
+.coop .cgrid .acts button { flex: 1 1 28%; min-height: 40px; padding: 0.25em 0.5em; font-size: max(12px, 0.82em); }
+.coop .qr svg { display: block; width: min(15em, 62dvh, 70vw); height: auto; border-radius: 0.4em; }
+.coop .cin { width: 100%; box-sizing: border-box; font-size: 16px; padding: 0.4em 0.5em; border: 0.12em solid var(--ink); border-radius: 0.4em; margin: 0.3em 0; }
+@media (max-aspect-ratio: 1/1) { .coop .cgrid { grid-template-columns: 1fr; } }
+/* a short phone screen (iPhone Safari landscape ~340 px): the town's two speech lines stay, the rest line goes (the HP bar
+   already says it), and the lines get tighter so the hub buttons stay on screen */
+@media (max-height: 430px) {
+  .town .trest { display: none; }
+  .town .elara, .town .person { margin: 0 0 0.2em; padding: 0.15em 0.45em; line-height: 1.3; font-size: max(11px, 0.76em); }
+}
