@@ -964,3 +964,9 @@ body:not(.touch-ui) #wbar .wbtns { right: var(--sr); }
 .cnew .rsws { display: flex; justify-content: center; gap: 0.6em; margin: 0.15em 0; }
 .cnew .rsw { width: 44px; height: 44px; min-height: 44px; padding: 0; border-radius: 50%; border: 0.16em solid #c8bfae; background: var(--sw); }
 .cnew .rsw.on { border-color: var(--ink); box-shadow: 0 0 0 0.14em #ffd36b; }
+/* a skill's name shouted when it is used (the novel's way): big, its element's colour with a dark edge (design/g6/SKILL-VFX.md) */
+.num.shout { font-size: max(14px, 1.35em); font-weight: 900; letter-spacing: .03em; color: #fff3c4; text-shadow: 0 0.08em 0 var(--ink), 0 0 0.3em var(--sc, #ffb020); }
+.num.shout.s-light { --sc: #ffb020; color: #fff1b0; } .num.shout.s-wind { --sc: #1fb08a; color: #d6fff0; } .num.shout.s-iron { --sc: #5a6878; color: #eef3ff; }
+.num.shout.s-ice { --sc: #2a8ad8; color: #dff3ff; } .num.shout.s-fire { --sc: #e0600a; color: #ffe0b0; } .num.shout.s-thunder { --sc: #7a4ae0; color: #efe4ff; } .num.shout.s-moon { --sc: #6a7ad0; color: #f0f4ff; }
+.num.shout.s-line-warrior { --sc: #e08a10; color: #ffe6b8; } .num.shout.s-line-mage { --sc: #7a4ae0; color: #efe4ff; } .num.shout.s-line-archer { --sc: #3a9a2a; color: #e4ffd8; } .num.shout.s-line-awakener, .num.shout.s-line-novice { --sc: #ffb020; color: #fff1b0; }
+.num.shout.smax { font-size: max(15px, 1.55em); color: #fff6d0; text-shadow: 0 0.08em 0 var(--ink), 0 0 0.35em #ffb020, 0 0 0.8em #ffd36b; }
