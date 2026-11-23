@@ -801,3 +801,111 @@ body.townview .tpad, body.townview .tbtns, body.townview .keys, body.townview .h
 body.world .prog { display: none; }
 @media (max-height: 460px) { #wbar .wmini { top: 0.4em; right: 4.2em; } #wbar .wmini canvas { width: 76px; height: 76px; } #wbar .wbtns { top: 4.2em; } #wbar .wbtns .hubb { min-height: 38px; } }
 @media (max-height: 460px) { #wbar .wbtns { top: 3.4em; flex-direction: row; } #wbar .wbtns .hubb { padding: 0.15em 0.45em; } }
+
+/* ================= the play screen, rebuilt for the walkable world (design/g6/HUD.md) =================
+   phone first (CrazyGames is played on phones a lot): the frame top left, the party under it, the messages under the party,
+   the menu bar bottom centre, the fight buttons bottom right (shrunk in a town). A computer: the same frame top left, the
+   skill bar bottom centre, the EXP strip along the bottom, the messages bottom left, the menu bottom right. */
+.hbar .pic { display: none; }
+.hbar.grow { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0.2em 0.45em; }
+.hbar.grow .pic { display: grid; place-items: center; flex: 0 0 auto; width: 3.4em; height: 3.4em; min-width: 44px; min-height: 44px; padding: 0; border-radius: 50%;
+  border: 0.16em solid var(--ink); background: radial-gradient(circle at 50% 40%, #fffaf0, #e6dac4); box-shadow: inset 0 0 0 0.14em var(--gold), 0 0.12em 0 rgba(47,36,31,.5); pointer-events: auto; }
+.hbar .pic img { width: 82%; height: 82%; object-fit: contain; }
+.hbar .pinfo { flex: 1 1 0; min-width: 0; }
+.hbar .lab .job { color: #fff; margin-right: 0.45em; }
+.hbar .lab .lvl { margin-right: 0.3em; }
+.hbar .xprow { display: none; }
+.hbar.grow .xprow { display: flex; align-items: center; gap: 0.3em; margin-top: 0.3em; }
+.hbar .bar.xp { flex: 1 1 0; height: 0.5em; border-width: 0.1em; background: #3a2c22; }
+.bar.xp .fill { display: block; height: 100%; background: linear-gradient(90deg, #fff0a8, #f2b33d); transition: width .25s; }
+.hbar .xpp { font-style: normal; font-weight: 800; font-size: max(11px, 0.7em); color: #ffe07a; text-shadow: 0 0.1em 0 var(--ink); white-space: nowrap; }
+.hbar .party { flex-basis: 100%; display: flex; gap: 0.4em; margin-top: 0.15em; }
+.hbar .party:empty { display: none; }
+.pm { position: relative; display: flex; flex-direction: column; align-items: center; width: 2.5em; }
+.pm img { width: 2.3em; height: 2.3em; border-radius: 50%; border: 0.16em solid var(--tint, #6fa8ff); background: rgba(251,243,228,.92); object-fit: contain; padding: 0.12em; }
+.pm b { position: absolute; top: -0.25em; right: -0.3em; min-width: 1.3em; text-align: center; font-size: max(10px, 0.62em); line-height: 1.35; background: var(--ink); color: #ffe07a; border-radius: 0.6em; padding: 0 0.2em; }
+.pm .php { display: block; width: 2.3em; height: 0.32em; margin-top: 0.14em; background: rgba(47,36,31,.75); border-radius: 0.2em; overflow: hidden; }
+.pm .php i { display: block; height: 100%; background: linear-gradient(#7fe08a, #3fa34d); }
+.pm.down img { filter: grayscale(1) brightness(.75); } .pm.down .php i { background: #8a8378; }
+/* the messages: under the frame on a phone (hud.js places them), bottom left on a computer */
+.touch-ui .sys { left: var(--sl); transform: none; align-items: flex-start; max-width: 38vw; }
+.touch-ui .sys .sysmsg { white-space: normal; font-size: max(11px, 0.8em); padding: 0.22em 0.6em; }
+body:not(.touch-ui) .sys { left: var(--sl); top: auto; bottom: calc(var(--sb) + 2.4em); transform: none; align-items: flex-start; max-width: 34vw; }
+/* the giant's bar: thin, high, never over its head */
+.touch-ui .gbar { width: min(24em, 40vw); }
+.touch-ui .gbar .gname { margin-bottom: 0.1em; } .touch-ui .gbar .gname b { font-size: 1em; } .touch-ui .gbar .gname span { display: none; }
+.touch-ui .gbar .bar.hp { height: 0.85em; } .touch-ui .gbar .bar.bal { height: max(12px, 0.75em); margin-top: 0.2em; } .touch-ui .gbar .chips { height: 1.3em; margin-top: 0.2em; }
+/* the menu bar: every map (in the fields too); bottom centre on a phone, between the stick and the fight buttons */
+#wbar .wbtns { pointer-events: auto; }
+.touch-ui #wbar .wbtns { left: 50%; top: auto; bottom: var(--sb); transform: translateX(-50%); flex-direction: row; gap: 0.3em; }
+.touch-ui #wbar .wbtns .hubb { flex-direction: column; gap: 0.05em; min-width: 50px; min-height: 48px; padding: 0.2em 0.35em; font-size: max(10px, 0.72em); line-height: 1.1; }
+.touch-ui #wbar .wbtns .hubb .ic { width: 1.9em; height: 1.9em; }
+.touch-ui #wbar .wbtns.mini .hubb { opacity: .88; }
+body:not(.touch-ui) #wbar .wbtns { left: auto; right: var(--sr); top: auto; bottom: calc(var(--sb) + 1.2em); flex-direction: row; }
+body:not(.touch-ui) #wbar .wbtns.mini .hubb { font-size: 0; gap: 0; padding: 0.3em; } body:not(.touch-ui) #wbar .wbtns.mini .hubb .ic { width: 28px; height: 28px; }
+/* in the town the fight buttons step back */
+body.intown .touch-ui .tbtns, .touch-ui.intown .tbtns, body.intown .tbtns { transform: scale(.72); transform-origin: right bottom; opacity: .7; }
+body.intown .keys { opacity: .6; }
+/* a computer: the skill bar bottom centre over the EXP strip */
+body:not(.touch-ui) .hbar { top: var(--st); bottom: auto; width: 19em; }
+body:not(.touch-ui) .hbar.grow .pic { width: 4em; height: 4em; }
+body:not(.touch-ui) .hbar .xprow { display: none !important; }
+body:not(.touch-ui) .keys { right: auto; left: 50%; transform: translateX(-50%); bottom: calc(var(--sb) + 1em); }
+.xpline { position: absolute; left: 0; right: 0; bottom: 0; height: 0.6em; background: rgba(30,22,18,.82); border-top: 0.1em solid var(--ink); pointer-events: none; }
+.xpline i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #fff0a8, #f2b33d); transition: width .25s; }
+.xpline em { position: absolute; right: var(--sr); bottom: 0.85em; font-style: normal; font-weight: 800; font-size: max(12px, 0.75em); color: #ffe07a; text-shadow: 0 0.1em 0 var(--ink); }
+.touch-ui .xpline { display: none; }
+/* the tower: "Floor n/25" and the floor's stages top right (no minimap there) */
+.prog, .touch-ui .prog { top: var(--st); left: auto; right: calc(var(--sr) + 3.6em); }
+
+/* out of town on a phone: one Menu button, the menus unfold over it */
+#wbar .wmore .burger { display: grid; place-items: center; font-size: 1.3em; line-height: 1; font-style: normal; }
+.touch-ui #wbar .wbtns.mini:not(.open) .hubb:not(.wmore) { display: none; }
+body:not(.touch-ui) #wbar .wmore { display: none; }
+body:not(.touch-ui) #wbar .wbtns.mini .hubb { width: 48px; height: 48px; min-height: 0; justify-content: center; }
+.touch-ui .gbar .bar { background: rgba(47,36,31,.38); }
+/* the health number sits on the bar, so the frame's line keeps room for the level and the job */
+.hbar.grow .pinfo { position: relative; }
+.hbar.grow .lab .hpw { position: absolute; left: 0; right: 0; top: 1.5em; height: 1.15em; display: flex; align-items: center; justify-content: center; font-size: max(11px, 0.72em); z-index: 1; pointer-events: none; }
+/* fixes from tools/ui-audit.mjs: text never under 12 px; Thai on the giant's bars needs their full height; the tower's
+   floor box under the frame on a phone (top right is the combo's); on a computer the giant's bar leaves room for the frame */
+.touch-ui .sys .sysmsg { font-size: max(12px, 0.8em); }
+.touch-ui .gbar .bar.hp { height: 1.05em; } .touch-ui .gbar .bar.bal { height: max(15px, 1em); margin-top: 0.25em; }
+.touch-ui .prog { top: calc(var(--st) + 4.6em); left: var(--sl); right: auto; }
+body:not(.touch-ui) .gbar { width: min(34em, calc(100vw - 46em)); }
+/* a phone: 12 px Thai with its vowel and tone marks needs ~16 px of bar (tools/ui-audit.mjs) */
+.touch-ui .gbar .bar.hp { height: max(16px, 1.3em); } .touch-ui .gbar .bar.bal { height: max(17px, 1.35em); }
+.touch-ui .gbar .bar.hp { height: max(18px, 1.45em); border-width: 0.1em; } .touch-ui .gbar .bar.hp .hpn { line-height: 1.2; }
+/* ---- round 2 (the review): menus beside the minimap, the coach clear of the frame, party names, the giant's bar lower ---- */
+body.modal-on #wbar { visibility: hidden; pointer-events: none; }
+.chips:empty { height: 0; margin: 0; }
+.touch-ui .gbar .gname { font-size: max(12px, 0.85em); }
+.hbar.grow .lab .hpw { gap: 0.3em; }
+/* the party: a name beside each circle on a computer; "Down" in place of the level */
+.pm { pointer-events: auto; }
+.pm b { font-size: max(12px, 0.62em); }
+.pm .dn { display: none; position: absolute; top: 0.55em; left: 50%; transform: translateX(-50%); font-style: normal; font-weight: 800; font-size: 12px; color: #fff; background: var(--red); border-radius: 0.4em; padding: 0 0.25em; }
+.pm.down b { display: none; } .pm.down .dn { display: block; }
+.pm .pn { display: none; }
+body:not(.touch-ui) .hbar .party { flex-direction: column; gap: 0.25em; }
+body:not(.touch-ui) .pm { flex-direction: row; width: auto; gap: 0.4em; align-items: center; }
+body:not(.touch-ui) .pm .pn { display: block; order: 2; font-weight: 800; font-size: max(12px, 0.8em); color: #fff; text-shadow: 0 0.1em 0 var(--ink); white-space: nowrap; max-width: 9em; overflow: hidden; text-overflow: ellipsis; }
+body:not(.touch-ui) .pm .php { order: 3; width: 4em; } body:not(.touch-ui) .pm .dn { left: 1.15em; }
+/* the menus: on a phone a row top right, left of the minimap (the bottom centre is the hero's ground) */
+.touch-ui #wbar .wbtns { top: var(--st); bottom: auto; left: auto; right: calc(var(--sr) + 3.6em + 112px); transform: none; flex-direction: row-reverse; }
+@media (max-height: 460px) { .touch-ui #wbar .wbtns { right: calc(4.2em + 88px); top: 0.4em; } }
+.touch-ui #wbar .wbtns .hubb { min-height: 46px; }
+.touch-ui #wbar .wbtns.mini:not(.open) .hl { display: none; }
+/* on a computer a column under the minimap, every button named */
+body:not(.touch-ui) #wbar .wbtns { top: calc(var(--st) + 3.6em + 104px + 2em); right: var(--sr); left: auto; bottom: auto; flex-direction: column; align-items: stretch; }
+body:not(.touch-ui) #wbar .wbtns .hubb, body:not(.touch-ui) #wbar .wbtns.mini .hubb { width: auto; height: auto; min-height: 40px; font-size: 0.85em; flex-direction: row; justify-content: flex-start; gap: 0.35em; padding: 0.2em 0.6em; }
+body:not(.touch-ui) #wbar .wbtns .hubb .ic { width: 1.6em; height: 1.6em; }
+#wbar .hubb .badge { position: absolute; top: -0.4em; right: -0.4em; }
+/* Elara's and the giants' lines: bottom centre on a phone (between the stick and the fight buttons), bottom left over the messages on a computer */
+.touch-ui .coach, .touch-ui .coach.show { top: auto; bottom: calc(var(--sb) + 0.4em); left: 50%; max-width: 34vw; transform: translateX(-50%); }
+body:not(.touch-ui) .coach { top: auto; bottom: calc(var(--sb) + 8.6em); left: var(--sl); }
+/* a computer in the world: the skill bar without its second line, so the hero's ground shows */
+body.world:not(.touch-ui) .keys .key small { display: none; }
+/* a computer: the level badge stays on the friend's circle; the health number stays in the frame's line (room there) */
+body:not(.touch-ui) .pm b { right: auto; left: 1.75em; top: -0.3em; }
+body:not(.touch-ui) .hbar.grow .lab .hpw { position: static; display: inline-flex; height: auto; font-size: inherit; margin-left: 0.4em; }
