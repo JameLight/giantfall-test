@@ -779,3 +779,12 @@ body.townview .tpad, body.townview .tbtns, body.townview .keys, body.townview .h
 .charw .jtop { display: flex !important; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; padding-bottom: 0.2em; }
 .charw .jtop .jcard { flex: 0 0 auto; min-width: 6.6em; }
 .charw .cgrid > .cr, .charw .tbody, .charw .jbody, .charw .jcol { min-width: 0; } .charw .jtop { max-width: 100%; }
+/* a building's job guild and the Guild Hall's wall of deeds (town sheet) */
+.tsheet .tguild { display: flex; align-items: center; gap: 0.5em; flex-wrap: wrap; margin: 0.5em 0; padding: 0.4em 0.6em; background: #fff; border: 0.12em solid #c8bfae; border-radius: 0.6em; }
+.tsheet .tguild .go { width: auto; flex: 1 1 auto; min-height: 44px; }
+.tsheet .tdeeds { display: grid; grid-template-columns: 1fr 1fr; gap: 0.2em 0.8em; margin: 0.5em 0; padding: 0.5em 0.7em; background: #3a2b25; color: #fff3d6; border-radius: 0.6em; }
+.tsheet .tdeeds b { grid-column: 1 / -1; color: #ffd36b; } .tsheet .tdeeds span { font-size: 0.88em; display: flex; justify-content: space-between; gap: 0.4em; } .tsheet .tdeeds em { font-style: normal; font-weight: 800; }
+.tsheet .tsvc { width: 100%; min-height: 44px; margin: 0.4em 0; }
+/* the bar and the sheet always above the plot chips (many buildings put a chip where the Back button is) */
+#townui .tbubs { z-index: 3; } .townbar { z-index: 5; } .tsheet { z-index: 6; }
+#townui:has(.tsheet) .tchips { visibility: hidden; }   /* the sheet open: the chips step aside */
