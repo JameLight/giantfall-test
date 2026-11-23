@@ -748,3 +748,30 @@ body.modal-on .coach { visibility: hidden; }
 .charw .fcards:has(> :nth-child(4)) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .nums .spelld { color: #e6d2ff; text-shadow: 0 0 0.3em #7a4fd0, 0 0.08em 0 #2a1840; }
 .nums .shieldd { color: #ffe58a; }
+
+/* ---- the town of 4x4 plots (src/main.js townUi): chips over the plots, the bar at the bottom, the build sheet ---- */
+.townb { flex-direction: row !important; gap: 0.4em; width: 100%; margin: 0.6em 0 0.2em; justify-content: center; }
+.townb .ic { width: 2em; height: 2em; } .townb small { font-weight: 700; opacity: .7; }
+#townui { position: fixed; inset: 0; z-index: 30; pointer-events: auto; touch-action: none; font-size: clamp(12px, 1.4vw, 15px); }
+#townui .tchips, #townui .tbubs { position: absolute; inset: 0; pointer-events: none; }
+.tchip { position: absolute; left: 0; top: 0; z-index: 2; pointer-events: auto; white-space: nowrap; min-height: 32px; padding: 0.2em 0.6em; border: 0.14em solid var(--ink); border-radius: 0.7em; background: #fff8ea; color: var(--ink); font-weight: 800; font-size: 0.9em; display: flex; align-items: center; gap: 0.3em; box-shadow: 0 0.15em 0 rgba(58,43,37,.35); }
+.tchip i { font-style: normal; color: #c98a1a; letter-spacing: -0.05em; }
+.tchip.o { background: #fff3cf; } .tchip.up { background: #ffe39a; box-shadow: 0 0 0.6em rgba(240,160,48,.8); }
+.tchip.l { z-index: 1; pointer-events: none; background: rgba(58,43,37,.55); color: #fff8ea; border-color: transparent; font-weight: 700; min-height: 0; font-size: 0.78em; box-shadow: none; } .tchip.hide { display: none; }
+.tbub { position: absolute; left: 0; top: 0; margin: 0; max-width: 15em; padding: 0.35em 0.6em; background: #fffdf6; border: 0.12em solid var(--ink); border-radius: 0.8em; color: var(--ink); font-size: 0.85em; line-height: 1.35; white-space: normal; }
+.tbub b { color: #7a4bc4; }
+.townbar { position: absolute; left: 50%; bottom: max(0.6em, env(safe-area-inset-bottom)); transform: translateX(-50%); display: flex; align-items: center; gap: 0.8em; padding: 0.35em 0.6em; background: var(--cream); border: 0.16em solid var(--ink); border-radius: 0.9em; box-shadow: 0 0.3em 0 rgba(58,43,37,.3); }
+.townbar .ghost { margin: 0; min-height: 44px; padding: 0 1em; }
+.townbar .tbt { display: flex; flex-direction: column; line-height: 1.25; } .townbar .tmats { white-space: nowrap; }
+.tsheet { position: absolute; right: 0.8em; top: 0.8em; bottom: 4.6em; width: min(22em, 46vw); overflow-y: auto; padding: 0.8em 1em; background: var(--cream); border: 0.16em solid var(--ink); border-radius: 0.9em; color: var(--ink); }
+.tsheet.wide { width: min(34em, 60vw); }
+.tsheet h3 { margin: 0 1.6em 0.4em 0; } .tsheet h3 small { font-size: 0.7em; opacity: .7; }
+.tsheet .tx { position: absolute; right: 0.4em; top: 0.3em; width: 44px; height: 44px; border: 0; background: none; font-size: 1.6em; color: var(--ink); }
+.tsheet .tsay { padding: 0.4em 0.6em; background: #fff; border-left: 0.25em solid #c98a1a; border-radius: 0.4em; } .tsheet .tsay b { margin-right: 0.3em; }
+.tsheet .go { width: 100%; min-height: 44px; display: flex; align-items: center; justify-content: center; gap: 0.25em; }
+.tcards { display: grid; grid-template-columns: repeat(auto-fill, minmax(13em, 1fr)); gap: 0.5em; }
+.tcard { display: flex; flex-direction: column; gap: 0.25em; padding: 0.5em 0.6em; background: #fff; border: 0.12em solid var(--ink); border-radius: 0.7em; }
+.tcard span { font-size: 0.88em; line-height: 1.4; } .tcard em { font-size: 0.82em; color: #7a4bc4; font-style: normal; font-weight: 700; }
+.tcard.lk { opacity: .55; } .tcard .go { margin-top: auto; font-size: 0.9em; }
+@media (max-height: 460px) { .tsheet { top: 0.4em; bottom: 3.9em; padding: 0.5em 0.7em; } .tsheet.wide { width: min(36em, 66vw); } .tcards { grid-template-columns: repeat(auto-fill, minmax(11.5em, 1fr)); } .townbar { padding: 0.2em 0.5em; } }
+body.townview .tpad, body.townview .tbtns, body.townview .keys, body.townview .hbar, body.townview .combo, body.townview .coach, body.townview .sysmsg { display: none !important; }
