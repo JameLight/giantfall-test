@@ -733,3 +733,18 @@ body.modal-on .coach { visibility: hidden; }
 .charw .fcard .fnow { color: #2f8f4e; font-style: normal; font-weight: 700; }
 .charw .fcard .flock { color: #8a7458; font-style: normal; }
 .charw .fcard button { min-height: 36px; margin-top: auto; }
+/* the Spell button and the mana bar (src/sim/magic.js, data/spells.json) */
+.tb-spell { width: 3.8em; height: 3.8em; right: 12.3em; bottom: 9.2em; background: #efe4ff; }
+.tb-spell.glow, .key.k-spell.glow .kart { box-shadow: 0 0 0.8em #b98cff; }
+.tb-spell b, .key.k-spell b { font-size: 0.72em; white-space: nowrap; }
+.hbar .bar.mana { height: 0.32em; margin-top: 0.15em; background: #2a2440; border-radius: 0.2em; overflow: hidden; }
+.hbar .bar.mana .fill { display: block; height: 100%; background: linear-gradient(90deg, #6f8cff, #b98cff); transition: width .15s; }
+.hbar .bar.mana.ready .fill { background: linear-gradient(90deg, #9fb4ff, #e2c8ff); box-shadow: 0 0 0.4em #b98cff; }
+.hbar .bar.mana.off { display: none; }
+.hbar .hrow .bar.mana { position: absolute; left: 0; width: calc(100% - 0.2em); top: 100%; }
+.charw .fcard.spc { border-left: 0.35em solid var(--sc); }
+.charw .fcards:has(> :nth-child(4)) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.charw .fcard.spc { border-left: 0.35em solid var(--sc); }
+.charw .fcards:has(> :nth-child(4)) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.nums .spelld { color: #e6d2ff; text-shadow: 0 0 0.3em #7a4fd0, 0 0.08em 0 #2a1840; }
+.nums .shieldd { color: #ffe58a; }
