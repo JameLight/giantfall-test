@@ -1019,3 +1019,41 @@ body:not(.touch-ui) #wbar .wbtns { right: var(--sr); }
 .charw .xclose { min-width: 44px; min-height: 44px; } .charw .cat { min-height: 44px; } .charw .bslot { min-width: 44px; min-height: 44px; } .charw .sock { min-height: 44px; }
 .touch-ui .tb.tb-spell { min-width: 44px; min-height: 44px; }
 .tb-spell { width: 4.4em; height: 4.4em; right: 12.6em; bottom: 9em; } .charw .cat { min-width: 44px; }
+
+/* ---- the hero sheet in the 'xianxia book' look (Jame chose style B: design/g7/mock/style-b.png) ---- */
+.modal:has(.cwb) .card { background: radial-gradient(ellipse at 50% 60%, #34436e 0%, #1c2140 60%, #0f1226 100%); border-color: #c9a24a; color: #f4e6c2; padding: 0; }
+.cwb { display: flex; flex-direction: column; height: 100%; }
+.cwb .btop { display: grid; grid-template-columns: auto auto 1fr auto; align-items: center; gap: 0.5em; padding: 4px 8px; background: linear-gradient(180deg, rgba(0,0,0,.45), transparent); }
+.cwb .bback { width: 48px; height: 40px; border-radius: 10px; border: 1.5px solid #c9a24a; background: rgba(0,0,0,.25); color: #ffd98a; font-weight: 900; font-size: 1.2em; }
+.cwb .bttl { color: #ffe6a8; font-size: 1.05em; }
+.cwb .bpow { justify-self: center; padding: 2px 22px; border: 1.5px solid #c9a24a; border-radius: 16px; background: linear-gradient(90deg, rgba(201,162,74,0), rgba(201,162,74,.35), rgba(201,162,74,0)); white-space: nowrap; }
+.cwb .bpow small { color: #e8c878; font-size: max(12px, 0.75em); } .cwb .bpow b { font-size: 1.35em; color: #ffe08a; text-shadow: 0 0 8px #c98a10; margin-left: 0.3em; } .cwb .bpow i { font-style: normal; font-weight: 800; margin-left: 0.4em; } .cwb .bpow i.up { color: #7ef08a; } .cwb .bpow i.down { color: #ff9a8a; }
+.cwb .bcur { display: flex; gap: 6px; } .cwb .bcur span { display: flex; align-items: center; gap: 4px; padding: 2px 10px 2px 4px; border-radius: 14px; background: rgba(0,0,0,.35); border: 1px solid #6a5a3a; font-weight: 800; font-size: max(12px, 0.8em); } .cwb .bcur .ic { width: 20px; height: 20px; }
+.cwb .bwrap { flex: 1; min-height: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px; padding: 0 8px 6px; }
+.cwb .brail { display: flex; flex-direction: column; gap: 5px; overflow-y: auto; max-height: 100%; padding-right: 2px; }
+.cwb .brail .tab { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; width: 58px; min-height: 48px; padding: 2px; border-radius: 9px; border: 1px solid #6a5a3a; background: rgba(0,0,0,.3); color: #e9dcc2; }
+.cwb .brail .tab .tabic { width: 1.5em; height: 1.5em; } .cwb .brail .tab span { font-size: max(12px, 0.66em); line-height: 1.2; }
+.cwb .brail .tab.on { border-color: #ffd98a; box-shadow: 0 0 8px #c98a10; background: rgba(201,162,74,.25); color: #ffe6a8; }
+.cwb .bmain { min-height: 0; overflow: auto; background: #fbf4e4; color: #2f241f; border-radius: 12px; padding: 8px; max-height: none; }
+.cwb .bmain.isstage { background: transparent; color: #f4e6c2; padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+.cwb .bstage { flex: 1; min-height: 0; display: grid; grid-template-columns: auto 1fr auto; gap: 8px; align-items: start; }
+.cwb .bcol { display: grid; grid-template-columns: repeat(2, 48px); gap: 6px; padding-top: 2px; }
+.cwb .bcol .ptile { position: relative; left: auto; top: auto; width: 48px; height: 48px; border-radius: 8px; background: linear-gradient(135deg, rgba(255,255,255,.14), rgba(0,0,0,.3)); border: 2px solid var(--rc); box-shadow: 0 0 8px var(--rc) inset; }
+.cwb .bcol .ptile.empty { border-style: dashed; opacity: .75; } .cwb .bcol .ptile .ic.shadow { opacity: .35; filter: grayscale(1) brightness(1.6); }
+.rdot { position: absolute; top: -4px; right: -4px; width: 12px; height: 12px; border-radius: 50%; background: #e8392a; border: 2px solid #fff; }
+.cwb .bcenter { position: relative; height: 100%; min-height: 0; }
+.cwb .bhero { position: absolute; left: 50%; bottom: 14px; top: 0; width: 60%; transform: translateX(-50%); background: none; border: 0; }
+.cwb .bhalo { position: absolute; left: 50%; top: 52%; width: min(64%, 240px); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; border: 2px solid rgba(255,214,120,.6); box-shadow: 0 0 30px rgba(255,200,90,.45), inset 0 0 30px rgba(255,200,90,.3); animation: bspin 14s linear infinite; }
+.cwb .bhalo2 { position: absolute; left: 50%; top: 52%; width: min(48%, 180px); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; border: 1.5px dashed rgba(255,230,160,.7); animation: bspin 20s linear infinite reverse; }
+@keyframes bspin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .cwb .bhalo, .cwb .bhalo2 { animation: none; } }
+.cwb .bwing { position: absolute; top: 10%; width: 42%; aspect-ratio: 1; } .cwb .bwing.l { right: 50%; } .cwb .bwing.r { left: 50%; transform: scaleX(-1); }
+.cwb .bwing g { fill: #ffd36b; stroke: #8a5a10; stroke-width: 2; opacity: .8; }
+.cwb .bname { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; color: #e8c878; font-size: max(12px, 0.8em); }
+.cwb .bbar2 { display: flex; gap: 8px; justify-content: center; padding: 4px 0 2px; }
+.cwb .gob { position: relative; min-width: 112px; height: 44px; padding: 0 14px; border-radius: 22px; font-weight: 900; color: #2f1a00; background: linear-gradient(#ffe08a, #e8a12a); border: 1.5px solid #fff2c0; box-shadow: 0 0 10px rgba(255,190,60,.45); }
+.cwb .gob.ghostb { background: rgba(0,0,0,.35); color: #ffe6a8; border-color: #c9a24a; box-shadow: none; } .cwb .gob:disabled { opacity: .45; }
+.cwb .bnote { text-align: center; font-size: 12px; color: #e8c878; margin: 0; }
+@media (max-height: 460px) { .cwb .btop { padding: 2px 6px; } .cwb .bback { height: 44px; } .cwb .gob { min-width: 96px; height: 44px; } .cwb .bcol { grid-template-columns: repeat(2, 44px); } .cwb .bcol .ptile { width: 44px; height: 44px; } }
+/* the rail and the body side by side in one row (older sheet rules span the tabs across the grid) */
+.cwb .bwrap { grid-template-rows: minmax(0, 1fr); } .cwb .brail { grid-column: 1; grid-row: 1; height: 100%; } .cwb .bmain { grid-column: 2; grid-row: 1; height: 100%; }
