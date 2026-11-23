@@ -1004,3 +1004,18 @@ body:not(.touch-ui) #wbar .wbtns { right: var(--sr); }
 @media (max-height: 460px) { .charw .bag { grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); } .charw .btile { min-width: 44px; min-height: 44px; } }
 .sdot { width: max(44px, 2.5em); height: max(44px, 2.5em); } .smap { grid-template-columns: repeat(4, max(52px, 4.2em)); }
 .charw .kf { min-width: 44px; min-height: 44px; } .charw .kf .ic { width: 1.7em; height: 1.7em; }
+/* the job tab, pictures first: the job's three skills as pictures with a name; talents by name, a tap shows what it does */
+.charw .jskills { display: flex; gap: 0.5em; margin-bottom: 0.4em; } .charw .jskills .jskill { flex-direction: column; gap: 0.15em; text-align: center; }
+.charw .jskills .jskill .sk { width: max(44px, 2.8em); height: max(44px, 2.8em); } .charw .jskills .jskill b { font-size: max(12px, 0.78em); }
+.charw .tal.sel { outline: 0.18em solid #f0a030; } .charw .tal.lock { opacity: .55; } .charw .tal b { font-size: max(12px, 0.85em); }
+.charw .taldet { margin: 0.2em 0 0.4em; padding: 0.4em 0.55em; background: #fff4d6; border: 0.12em solid #e8c070; border-radius: 0.5em; font-size: max(12px, 0.82em); line-height: 1.45; } .charw .taldet small { color: #6a5d48; }
+/* the skill map on a phone on its side: big stones over the width, the stone's card over the map only once one is tapped */
+@media (max-height: 460px) {
+  .charw .swrap { display: block; position: relative; } .charw .swrap .sside { display: none; }
+  .charw .swrap.open .sside { display: flex; flex-direction: column; gap: 0.3em; position: absolute; right: 0; top: 0; width: 46%; z-index: 3; box-shadow: 0 0.3em 1em rgba(47,36,31,.3); border-radius: 0.7em; }
+  .charw .smap { grid-template-columns: repeat(4, 100px); gap: 4px; } .charw .sdot { width: 48px; height: 48px; } .charw .sdot.big { width: 54px; height: 54px; } .charw .sfork { gap: 4px; } .charw .sfork .sdot { width: 44px; height: 44px; }
+}
+/* the last small targets (tools/menu-audit.mjs): close, category chips, brew slots, sigil sockets, the fourth skill button */
+.charw .xclose { min-width: 44px; min-height: 44px; } .charw .cat { min-height: 44px; } .charw .bslot { min-width: 44px; min-height: 44px; } .charw .sock { min-height: 44px; }
+.touch-ui .tb.tb-spell { min-width: 44px; min-height: 44px; }
+.tb-spell { width: 4.4em; height: 4.4em; right: 12.6em; bottom: 9em; } .charw .cat { min-width: 44px; }
