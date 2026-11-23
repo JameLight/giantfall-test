@@ -1142,3 +1142,10 @@ body:not(.touch-ui) #wbar .wbtns { right: var(--sr); }
 .cwb .bmain:not(.isstage) .idetail .iacts > * { margin: 0; min-width: 0; font-size: max(12px, 0.9em); padding: 0.3em 0.2em; }
 .cwb .bmain:not(.isstage) .idetail .iacts > :is(.forgeb, p, .small) { grid-column: 1 / -1; }
 .cwb .bmain:not(.isstage) :is(.item .fx, .skdet .rout b i, .skdet b i) { color: #7cc8ff; }
+/* the frame's painted corners (gold filigree, a phoenix feather, a jade stone) and the title plate under the tab's name */
+.cwb .bmain.s7frame::before, .cwb .bmain.s7frame::after { content: none; }
+.cwb .bmain.s7frame { background-image: url(ui/corner-tl.webp), url(ui/corner-tr.webp), url(ui/corner-bl.webp), url(ui/corner-br.webp), linear-gradient(180deg, rgba(20,26,56,.55), rgba(8,10,24,.75)); background-position: left top, right top, left bottom, right bottom, 0 0; background-size: 58px 58px, 58px 58px, 58px 58px, 58px 58px, auto; background-repeat: no-repeat; }
+.cwb .bmain.s7frame:not(.isstage) { background-image: url(ui/corner-tl.webp), url(ui/corner-tr.webp), url(ui/corner-bl.webp), url(ui/corner-br.webp), linear-gradient(180deg, #182044, #0c1028); }
+.cwb .bttl { min-width: 150px; padding: 9px 36px; text-align: center; background: url(ui/plate.webp) center / 100% 100% no-repeat; color: #fff2c8; font-weight: 900; text-shadow: 0 0 6px #000, 0 0 10px rgba(255,190,70,.6); white-space: nowrap; }
+/* an empty worn spot: the painted slot frame (gold double line, cloud corners) in place of a dashed line */
+.cwb .bring .bcol .ptile.empty { border: 0; background: url(ui/slot.webp) center / 100% 100% no-repeat, rgba(15,18,38,.8); opacity: 1; }
