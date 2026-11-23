@@ -1072,3 +1072,73 @@ body:not(.touch-ui) #wbar .wbtns { right: var(--sr); }
 .cwb .bring .bwing { top: 12%; width: 24%; } .cwb .bring .bhalo { width: min(38%, 220px); } .cwb .bring .bhalo2 { width: min(28%, 160px); }
 .cwb .bring .bhero { width: 34%; } .cwb .bring .bcol .ptile.empty { background: rgba(15,18,38,.75); opacity: 1; }
 .charw .splusb { font-size: 1.7em !important; line-height: 1; }
+/* the status sheet as the novel draws it ([สถานะ] in a double gold frame of light), one page: the sheet on the left, the
+   hero on a magic circle with the worn spots round him, the six stats on the right, the skills and the weapon below */
+.cwb .bmain.s7frame { position: relative; border: 3px double #e0b85a; border-radius: 10px; box-shadow: 0 0 0 1px rgba(255,214,120,.18), 0 0 14px rgba(232,180,70,.35), inset 0 0 22px rgba(232,180,70,.18); background: linear-gradient(180deg, rgba(20,26,56,.55), rgba(8,10,24,.75)); }
+.cwb .bmain.s7frame::before, .cwb .bmain.s7frame::after { content: ''; position: absolute; width: 12px; height: 12px; background: #ffd98a; transform: rotate(45deg); box-shadow: 0 0 8px #ffb030; z-index: 3; pointer-events: none; }
+.cwb .bmain.s7frame::before { left: 3px; top: 3px; } .cwb .bmain.s7frame::after { right: 3px; bottom: 3px; }
+.cwb .s7 { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(150px, 0.8fr) minmax(0, 2fr) minmax(220px, 1fr); gap: 6px; padding: 6px 8px 0; }
+.cwb .s7left { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.cwb .s7name { margin: 0; font-size: 1.1em; font-weight: 900; color: #fff2c8; text-shadow: 0 0 6px #c98a10; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid rgba(224,184,90,.5); padding-bottom: 2px; }
+.cwb .s7info { display: grid; grid-template-columns: auto 1fr; gap: 1px 8px; font-size: max(12px, 0.8em); line-height: 1.45; }
+.cwb .s7info span { color: #c8b07a; } .cwb .s7info b { color: #fff2c8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cwb .s7bar span { display: flex; justify-content: space-between; font-size: 12px; line-height: 1.3; } .cwb .s7bar span b { color: #e8c878; } .cwb .s7bar span em { font-style: normal; color: #f4e6c2; font-variant-numeric: tabular-nums; }
+.cwb .s7bar > i { display: block; height: 7px; border-radius: 4px; background: rgba(0,0,0,.5); border: 1px solid rgba(224,184,90,.45); overflow: hidden; }
+.cwb .s7bar > i > i { display: block; height: 100%; border-radius: 3px; }
+.cwb .s7bar.exp > i > i { background: linear-gradient(90deg, #b88a20, #ffe08a); } .cwb .s7bar.hp > i > i { background: linear-gradient(90deg, #a8242a, #ff6a5a); } .cwb .s7bar.mp > i > i { background: linear-gradient(90deg, #2050b0, #6ab8ff); }
+.cwb .s7mid.bring { position: relative; display: block; min-height: 0; }
+.cwb .s7mid .bhero { left: 0; right: 0; top: 0; bottom: 0; width: auto; transform: none; }
+.cwb .s7right { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.cwb .s7pts { margin: 0; font-size: max(12px, 0.8em); color: #e8c878; text-align: right; } .cwb .s7pts b { color: #7fe08a; font-size: 1.2em; }
+.cwb .s7stats { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.cwb .s7st { display: grid; grid-template-columns: auto 1fr 44px; align-items: center; gap: 4px; min-height: 44px; padding-left: 6px; border-radius: 8px; background: rgba(0,0,0,.3); border: 1px solid rgba(224,184,90,.4); }
+.cwb .s7st b { font-weight: 900; color: #e8c878; font-size: max(12px, 0.8em); } .cwb .s7st em { font-style: normal; font-weight: 900; font-size: 1.25em; color: #fff2c8; font-variant-numeric: tabular-nums; text-align: right; }
+.cwb .s7plus { width: 44px; height: 44px; border-radius: 8px; border: 1.5px solid #ffd98a; background: linear-gradient(#ffe08a, #d89020); color: #2f1a00; font-weight: 900; font-size: 1.5em; line-height: 1; box-shadow: 0 0 8px rgba(255,190,70,.55); }
+.cwb .s7plus:disabled { background: rgba(255,255,255,.08); border-color: rgba(224,184,90,.35); color: rgba(255,240,200,.35); box-shadow: none; }
+.cwb .s7bot { display: flex; align-items: center; gap: 8px; padding: 4px 8px 6px; border-top: 1px solid rgba(224,184,90,.45); background: linear-gradient(0deg, rgba(0,0,0,.35), transparent); }
+.cwb .s7skills { display: flex; gap: 6px; }
+.cwb .s7sk { position: relative; width: 46px; height: 46px; padding: 0; border-radius: 9px; border: 1.5px solid #e0b85a; background: rgba(0,0,0,.4); box-shadow: 0 0 6px rgba(255,190,70,.35); }
+.cwb .s7sk .ic { width: 100%; height: 100%; border-radius: 8px; object-fit: cover; }
+.cwb .s7sk em { position: absolute; right: -2px; bottom: -4px; font-style: normal; font-size: 11px; font-weight: 900; color: #fff2c8; background: #2a1e10; border: 1px solid #e0b85a; border-radius: 6px; padding: 0 3px; line-height: 1.35; }
+.cwb .s7weap { flex: 1; margin: 0; min-width: 0; font-size: max(12px, 0.82em); color: #c8b07a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cwb .s7weap b { text-shadow: 0 0 6px rgba(0,0,0,.8); }
+.cwb .s7bot .gob { flex: none; }
+.cwb .bback { height: 44px; }
+/* every tab of the hero window in the same system window as the status sheet (Jame: "ใช้แบบเดียวกันไปเลย"): the dark
+   sheet inside the double gold frame. The page's two colours swap inside it (ink: the gold of the lines and the text,
+   cream: the night of the sheet), and the light papers the tabs were drawn on become glass over the dark */
+.cwb .bmain.s7frame:not(.isstage) { --ink: #e8c878; --cream: #141a36; --stone: #2a3050; color: #f4e6c2; background: linear-gradient(180deg, #182044, #0c1028); padding: 10px 10px 8px; }
+.cwb .bmain:not(.isstage) :is(.btile, .ptile, .kf, .cat, .jcard, .tal, .tcard, .rtile, .fcard, .scard, .bbtn, .sdot, .pcard, .rdet2, .taldet, .lrow, .sheet2 .grp div, .sktile) { background: rgba(255,255,255,.07); color: #f4e6c2; border-color: rgba(224,184,90,.55); }
+.cwb .bmain:not(.isstage) .btile { border-color: var(--rc); box-shadow: inset 0 0 10px rgba(0,0,0,.35); }
+.cwb .bmain:not(.isstage) :is(.btile.sel, .jcard.sel, .kf.on, .sdot.taken, .pcard.sel, .tcard.sel) { background: rgba(255,200,90,.24); border-color: #ffd98a; box-shadow: 0 0 10px rgba(255,190,70,.45); }
+.cwb .bmain:not(.isstage) :is(.btile.miss, .btile.gone, .scard.lock) { background: rgba(0,0,0,.35); }
+.cwb .bmain:not(.isstage) :is(.tal.on, .fcard.on) { background: rgba(80,200,110,.18); border-color: #7fe08a; }
+.cwb .bmain:not(.isstage) .scard.on { background: rgba(90,170,255,.16); border-color: #6ab8ff; }
+.cwb .bmain:not(.isstage) .cat.on { background: #e0b85a; color: #2f1a00; border-color: #ffd98a; }
+.cwb .bmain:not(.isstage) .idetail { background: linear-gradient(180deg, #1e2750, #10142e); border: 2px solid #e0b85a; box-shadow: 0 0 14px rgba(232,180,70,.35), -6px 4px 16px rgba(0,0,0,.6); }
+.cwb .bmain:not(.isstage) .idetail .iacts { background: linear-gradient(rgba(16,20,46,0), #10142e 0.6em); }
+.cwb .bmain:not(.isstage) :is(.mbar, .scard .mbar, .skdet .mbar) { background: rgba(0,0,0,.5); }
+.cwb .bmain:not(.isstage) :is(.small, small, .sper, .ghead, .t-head, .hint, .empty) { color: #c8b07a; }
+.cwb .bmain:not(.isstage) .ghead { border-bottom: 1px solid rgba(224,184,90,.4); }
+.cwb .bmain:not(.isstage) .go { color: #2f1a00; background: linear-gradient(#ffe08a, #e0a12a); border-color: #ffd98a; box-shadow: 0 0 8px rgba(255,190,70,.45); }
+.cwb .bmain:not(.isstage) .go:disabled { background: rgba(255,255,255,.1); color: rgba(255,240,200,.45); box-shadow: none; border-color: rgba(224,184,90,.35); }
+.cwb .bmain:not(.isstage) .ghost { color: #ffe6a8; border-color: #e0b85a; }
+.cwb .bmain:not(.isstage) .srow { border-bottom-color: rgba(224,184,90,.3); } .cwb .bmain:not(.isstage) .srow em { color: #fff2c8; } .cwb .bmain:not(.isstage) .srow small { color: #c8b07a; }
+.cwb .bmain:not(.isstage) .splusb { background: linear-gradient(#ffe08a, #d89020); color: #2f1a00; box-shadow: 0 0 8px rgba(255,190,70,.45); border: 1.5px solid #ffd98a; }
+.cwb .bmain:not(.isstage) .splusb:disabled { background: rgba(255,255,255,.08); color: rgba(255,240,200,.35); box-shadow: none; border-color: rgba(224,184,90,.35); }
+.cwb .bmain:not(.isstage) .btile.mt em.cnt { background: rgba(10,12,28,.85); color: #fff2c8; }
+.cwb .bmain:not(.isstage) :is(.bbtn em, .sktile em, .bbtn kbd) { background: #2a1e10; color: #fff2c8; border-color: #e0b85a; }
+.cwb .bmain:not(.isstage) :is(.keyrow > span, .part, .bslot, .sock, .sdet, .skon) { background: rgba(255,255,255,.07); color: #f4e6c2; border-color: rgba(224,184,90,.55); }
+.cwb .bmain:not(.isstage) .keyrow > span b { color: #fff2c8; } .cwb .bmain:not(.isstage) .keyrow > span small { color: #c8b07a; }
+.cwb .bmain:not(.isstage) .skon { background: #2a1e10; color: #ffe08a; border: 1px solid #e0b85a; }
+.cwb .bmain:not(.isstage) b.atkv { color: #ffe08a; }
+.cwb .bmain:not(.isstage) .sock { border: 1.5px dashed rgba(224,184,90,.6); }
+.cwb .bmain:not(.isstage) .item { background: linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.03)); color: #f4e6c2; }
+.cwb .bmain:not(.isstage) .item small { color: #c8b07a; }
+.cwb .bmain:not(.isstage) .forgeb { background: rgba(255,200,90,.16); color: #ffe6a8; border-color: #e0b85a; }
+.cwb .bmain:not(.isstage) .dclose { min-width: 44px; min-height: 44px; border-radius: 50%; background: #2a1e10; color: #ffe08a; border: 1.5px solid #e0b85a; font-weight: 900; }
+/* an item's buttons in two rows (wear · lock · salvage, then the forge) so its numbers stay in sight on a phone */
+.cwb .bmain:not(.isstage) .idetail .iacts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.cwb .bmain:not(.isstage) .idetail .iacts > * { margin: 0; min-width: 0; font-size: max(12px, 0.9em); padding: 0.3em 0.2em; }
+.cwb .bmain:not(.isstage) .idetail .iacts > :is(.forgeb, p, .small) { grid-column: 1 / -1; }
+.cwb .bmain:not(.isstage) :is(.item .fx, .skdet .rout b i, .skdet b i) { color: #7cc8ff; }
