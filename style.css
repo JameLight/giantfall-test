@@ -924,3 +924,43 @@ body:not(.touch-ui) .hbar.grow .lab .hpw { position: static; display: inline-fle
 body:not(.touch-ui) #wbar .wbtns { right: var(--sr); }
 /* the sheet keeps out of the camera island too (the CrazyGames SDK's safe area as well as the browser's) */
 .modal:has(.charw) { padding-left: var(--sl); padding-right: var(--sr); }
+/* the class window (data/book.json): four cards, the hidden one gold; the system's own heading */
+.cpick { max-width: 56em; } .cpick .syshead { margin: 0 0 0.2em; font-size: 1.25em; font-weight: 900; color: #1f6f9a; }
+.cpick .ccards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.45em; margin: 0.5em 0; }
+.ccls { display: flex; flex-direction: column; align-items: center; gap: 0.2em; padding: 0.5em 0.4em; min-height: 44px; text-align: center; background: #eef7ff; border: 0.16em solid var(--ink); border-radius: 0.8em; color: var(--ink); }
+.ccls .cemb { width: 2.6em; height: 2.6em; object-fit: contain; } .ccls b { font-size: 1.05em; } .ccls small { font-size: max(12px, 0.78em); line-height: 1.4; }
+.ccls em { font-style: normal; font-weight: 800; font-size: max(12px, 0.75em); color: #8a6a20; }
+.ccls .cstart { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.2em; } .ccls .cstart i { font-style: normal; font-size: max(12px, 0.72em); padding: 0.05em 0.4em; border-radius: 0.4em; background: rgba(47,36,31,.1); }
+.ccls.sel { background: #fff4d6; box-shadow: inset 0 0 0 0.16em #f2b33d; } .ccls.gold { background: linear-gradient(#fff6da, #ffe7a0); border-color: #a0700a; }
+.ccls.gold.lock { background: #e8e2d6; } .ccls.lock { opacity: .75; } .ccls.lock .cemb { filter: grayscale(1) brightness(.4); }
+.cpick .row { display: flex; justify-content: center; gap: 0.5em; }
+@media (max-height: 420px) { .cpick .ccards { gap: 0.3em; } .ccls { padding: 0.3em; } .ccls .cemb { width: 1.8em; height: 1.8em; } }
+/* the skill book: the four buttons on top, then the skills as cards (Lv, kind, MP, cooldown, uses to the next level) */
+.bbar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.35em; margin-bottom: 0.4em; }
+.bbtn { display: flex; flex-direction: column; align-items: center; gap: 0.1em; min-height: 44px; padding: 0.3em; background: #eef7ff; border: 0.16em solid var(--ink); border-radius: 0.7em; color: var(--ink); }
+.bbtn kbd { font-weight: 900; font-size: max(12px, 0.75em); } .bbtn b { font-size: max(12px, 0.85em); line-height: 1.3; } .bbtn small { font-size: max(12px, 0.72em); opacity: .8; }
+.bbtn.sel { background: #fff4d6; box-shadow: inset 0 0 0 0.16em #f2b33d; }
+.scards { display: grid; grid-template-columns: repeat(auto-fill, minmax(12.5em, 1fr)); gap: 0.4em; margin-bottom: 0.5em; }
+.scard { display: flex; flex-direction: column; gap: 0.15em; padding: 0.4em 0.55em; background: #f7f1e4; border: 0.14em solid var(--ink); border-radius: 0.6em; }
+.scard b i { font-style: normal; font-size: 0.8em; color: #1f6f9a; } .scard small { font-size: max(12px, 0.75em); line-height: 1.4; } .scard .skind { font-weight: 700; opacity: .85; }
+.scard .mbar { display: block; height: 0.35em; border-radius: 0.2em; background: rgba(47,36,31,.15); overflow: hidden; } .scard .mbar i { display: block; height: 100%; background: #3aa0d8; }
+.scard.on { background: #eaf6ff; } .scard.max { box-shadow: inset 0 0 0 0.14em #f2b33d; } .scard.max .mbar i { background: #f2b33d; }
+.scard.lock { opacity: .7; background: #ece6da; } .scard .fnow, .scard .flock { font-style: normal; font-weight: 800; font-size: max(12px, 0.75em); }
+.charw .stats6 { grid-template-columns: repeat(3, 1fr); }
+/* a skill button without the MP for it: dimmed */
+.key.nomp .kart, .tb.nomp { filter: grayscale(.8) brightness(.75); }
+/* the characters of the account: nine slots (picture, name, level and class), a new one: name, body, colour */
+.csel, .cnew { max-width: 52em; } .csel .syshead, .cnew .syshead { margin: 0 0 0.3em; font-size: 1.2em; font-weight: 900; color: #1f6f9a; }
+.cslots { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.35em; margin-bottom: 0.4em; }
+.cslot { display: flex; flex-direction: column; align-items: center; gap: 0.1em; min-height: 44px; padding: 0.3em; background: #eef7ff; border: 0.16em solid var(--ink); border-radius: 0.7em; color: var(--ink); }
+.cslot img { width: 2.8em; height: 2.8em; object-fit: cover; border-radius: 50%; background: #fff; } .cslot b { font-size: max(12px, 0.9em); } .cslot small { font-size: max(12px, 0.72em); opacity: .85; }
+.cslot.empty { background: #f1ebdf; border-style: dashed; opacity: .85; justify-content: center; } .cslot.empty b { font-size: 1.4em; }
+.cslot.sel { background: #fff4d6; box-shadow: inset 0 0 0 0.16em #f2b33d; } .cslot.now img { box-shadow: 0 0 0 0.15em #3aa0d8; }
+.csel .row, .cnew .row { display: flex; justify-content: center; gap: 0.5em; margin-top: 0.4em; }
+.cnew .cname { display: flex; align-items: center; gap: 0.5em; font-weight: 800; } .cnew .cname input { flex: 1; font: inherit; font-size: 16px; padding: 0.35em 0.6em; border: 0.14em solid var(--ink); border-radius: 0.6em; min-height: 44px; }
+.clooks { display: grid; grid-template-columns: repeat(8, 1fr); gap: 0.3em; } .clook { padding: 0.15em; min-height: 44px; background: #eef7ff; border: 0.14em solid var(--ink); border-radius: 0.6em; }
+.clook img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 0.4em; display: block; } .clook.sel { background: #fff4d6; box-shadow: inset 0 0 0 0.16em #f2b33d; }
+@media (max-height: 420px) { .cslot img { width: 2em; height: 2em; } .cslots { gap: 0.25em; } }
+.cnew .rsws { display: flex; justify-content: center; gap: 0.6em; margin: 0.15em 0; }
+.cnew .rsw { width: 44px; height: 44px; min-height: 44px; padding: 0; border-radius: 50%; border: 0.16em solid #c8bfae; background: var(--sw); }
+.cnew .rsw.on { border-color: var(--ink); box-shadow: 0 0 0 0.14em #ffd36b; }
