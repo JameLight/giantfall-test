@@ -775,3 +775,7 @@ body.modal-on .coach { visibility: hidden; }
 .tcard.lk { opacity: .55; } .tcard .go { margin-top: auto; font-size: 0.9em; }
 @media (max-height: 460px) { .tsheet { top: 0.4em; bottom: 3.9em; padding: 0.5em 0.7em; } .tsheet.wide { width: min(36em, 66vw); } .tcards { grid-template-columns: repeat(auto-fill, minmax(11.5em, 1fr)); } .townbar { padding: 0.2em 0.5em; } }
 body.townview .tpad, body.townview .tbtns, body.townview .keys, body.townview .hbar, body.townview .combo, body.townview .coach, body.townview .sysmsg { display: none !important; }
+/* eleven jobs: one row that scrolls sideways (design/g4/JOBS.md) */
+.charw .jtop { display: flex !important; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; padding-bottom: 0.2em; }
+.charw .jtop .jcard { flex: 0 0 auto; min-width: 6.6em; }
+.charw .cgrid > .cr, .charw .tbody, .charw .jbody, .charw .jcol { min-width: 0; } .charw .jtop { max-width: 100%; }
