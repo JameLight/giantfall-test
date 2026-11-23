@@ -1149,3 +1149,50 @@ body:not(.touch-ui) #wbar .wbtns { right: var(--sr); }
 .cwb .bttl { min-width: 150px; padding: 9px 36px; text-align: center; background: url(ui/plate.webp) center / 100% 100% no-repeat; color: #fff2c8; font-weight: 900; text-shadow: 0 0 6px #000, 0 0 10px rgba(255,190,70,.6); white-space: nowrap; }
 /* an empty worn spot: the painted slot frame (gold double line, cloud corners) in place of a dashed line */
 .cwb .bring .bcol .ptile.empty { border: 0; background: url(ui/slot.webp) center / 100% 100% no-repeat, rgba(15,18,38,.8); opacity: 1; }
+/* the system window outside the hero window (class pick, character select, a new character): the same dark sheet in the
+   double gold frame with painted corners, its name on the painted title plate (design/g8/STANDARD.md) */
+.modal:has(.sysw) .card { --ink: #e8c878; --cream: #141a36; color: #f4e6c2; border: 3px double #e0b85a; box-shadow: 0 0 0 1px rgba(255,214,120,.2), 0 0 18px rgba(232,180,70,.4), inset 0 0 24px rgba(232,180,70,.15);
+  background: url(ui/corner-tl.webp) left top / 54px no-repeat, url(ui/corner-tr.webp) right top / 54px no-repeat, url(ui/corner-bl.webp) left bottom / 54px no-repeat, url(ui/corner-br.webp) right bottom / 54px no-repeat, linear-gradient(180deg, #1a2248, #0c1028); }
+.modal:has(.csel) .card, .modal:has(.cnew) .card { background: url(ui/corner-tl.webp) left top / 54px no-repeat, url(ui/corner-tr.webp) right top / 54px no-repeat, url(ui/corner-bl.webp) left bottom / 54px no-repeat, url(ui/corner-br.webp) right bottom / 54px no-repeat, linear-gradient(180deg, rgba(14,18,44,.82), rgba(8,10,26,.9)), url(ui/select-bg.webp) center / cover no-repeat; }
+.sysw .syshead2 { display: flex; align-items: center; justify-content: center; gap: 0.6em; position: relative; margin: 0 0 0.35em; }
+.sysw .syshead2 .ghost { position: absolute; right: 0; top: 50%; transform: translateY(-50%); margin: 0; min-height: 44px; color: #ffe6a8; border-color: #e0b85a; }
+.sysplate { display: inline-block; min-width: 9em; padding: 0.45em 2.4em; text-align: center; background: url(ui/plate.webp) center / 100% 100% no-repeat; color: #fff2c8; font-weight: 900; font-size: 1.1em; text-shadow: 0 0 6px #000, 0 0 10px rgba(255,190,70,.6); white-space: nowrap; }
+.sysw .small, .sysw small { color: #c8b07a; }
+.sysw .go { color: #2f1a00; background: linear-gradient(#ffe08a, #e0a12a); border-color: #ffd98a; box-shadow: 0 0 8px rgba(255,190,70,.45); }
+.sysw .go:disabled { background: rgba(255,255,255,.1); color: rgba(255,240,200,.45); box-shadow: none; border-color: rgba(224,184,90,.35); }
+.sysw .ghost { color: #ffe6a8; border-color: #e0b85a; }
+/* the class window: four painted cards, the chosen path beside them */
+.cpick.sysw { max-width: 60em; }
+.cpick .cpbody { display: grid; grid-template-columns: minmax(0, 1fr) minmax(11em, 15em); gap: 0.6em; align-items: stretch; }
+.cpick .ccards { margin: 0; gap: 0.45em; }
+.sysw .ccls { position: relative; padding: 0; overflow: hidden; aspect-ratio: 3 / 4; background: #0c1028; border: 2px solid rgba(224,184,90,.55); border-radius: 0.7em; color: #fff2c8; }
+.sysw .ccls .cart { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.sysw .ccls b { position: absolute; left: 0; right: 0; bottom: 0; padding: 1.2em 0.2em 0.35em; background: linear-gradient(rgba(8,10,26,0), rgba(8,10,26,.92)); font-size: 1.05em; text-shadow: 0 0 6px #000; }
+.sysw .ccls.sel { border-color: #ffd98a; box-shadow: 0 0 0 2px #ffd98a, 0 0 16px rgba(255,190,70,.7); }
+.sysw .ccls.gold { border-color: #ffd36b; } .sysw .ccls.gold:not(.lock) { box-shadow: 0 0 14px rgba(255,200,80,.6); }
+.sysw .ccls.lock .cart { filter: none; } .sysw .ccls.lock { opacity: 1; }
+.cpick .cdet { display: flex; flex-direction: column; gap: 0.35em; padding: 0.55em 0.7em; border: 1.5px solid rgba(224,184,90,.55); border-radius: 0.7em; background: rgba(255,255,255,.05); min-width: 0; }
+.cpick .cdet.hint { justify-content: center; text-align: center; color: #c8b07a; }
+.cpick .cdname { margin: 0; font-size: 1.25em; font-weight: 900; color: #fff2c8; text-shadow: 0 0 8px rgba(255,190,70,.6); }
+.cpick .cdet .small { margin: 0; line-height: 1.5; }
+.cpick .cdrare { margin: 0; font-weight: 800; color: #ffd36b; }
+.cpick .cdsk { display: flex; gap: 0.5em; } .cpick .cdsk span { display: flex; flex-direction: column; align-items: center; gap: 0.1em; font-size: max(12px, 0.78em); }
+.cpick .cdsk img { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid #e0b85a; box-shadow: 0 0 8px rgba(255,190,70,.45); } .cpick .cdsk i { font-style: normal; }
+.cpick .cdet .go { margin-top: auto; }
+@media (max-height: 460px) { .cpick .cpbody { grid-template-columns: minmax(0, 1fr) 13em; } .cpick .ccards { max-width: calc((100dvh - 7.5em) * 4 * 0.75 + 1.5em); } .cpick .cdet { padding: 0.4em 0.55em; } .cpick .cdet .small { font-size: 12px; } }
+/* character select and a new character */
+.sysw .cslot { background: url(ui/slot.webp) center / 100% 100% no-repeat, rgba(10,12,30,.7); border: 0; border-radius: 0.5em; color: #f4e6c2; min-height: 64px; }
+.sysw .cslot img { background: #1a2248; box-shadow: 0 0 0 1.5px #e0b85a; } .sysw .cslot.empty { background: url(ui/slot.webp) center / 100% 100% no-repeat, rgba(10,12,30,.45); opacity: 1; } .sysw .cslot.empty b { color: #ffd98a; }
+.sysw .cslot.sel { box-shadow: 0 0 0 2px #ffd98a, 0 0 14px rgba(255,190,70,.6); background: url(ui/slot.webp) center / 100% 100% no-repeat, rgba(255,200,90,.2); }
+.sysw .clook { background: rgba(255,255,255,.07); border-color: rgba(224,184,90,.55); } .sysw .clook.sel { border-color: #ffd98a; box-shadow: 0 0 10px rgba(255,190,70,.6); background: rgba(255,200,90,.2); }
+.sysw .cname input { background: rgba(0,0,0,.35); color: #fff2c8; border-color: #e0b85a; }
+.sysw .t-head { color: #e8c878; }
+.modal:has(.cpick) .card { width: min(62em, 96vw); max-height: 96dvh; }
+.modal:has(.csel) .card, .modal:has(.cnew) .card { width: min(46em, 94vw); }
+.cpick .ccards { max-width: none !important; }
+@media (max-height: 460px) { .modal:has(.cpick) .card { padding: 0.45em 0.6em; } .cpick .cpbody { grid-template-columns: minmax(0, 1fr) 12.5em; } .sysw .ccls { aspect-ratio: auto; height: calc(100dvh - 6.2em); } .sysplate { padding: 0.35em 2.2em; font-size: 1em; } }
+/* the system's "ting!" lines in play in the same window as every other system window: dark sheet, double gold line,
+   the header in gold; a warning keeps its red */
+.sysmsg { background: linear-gradient(90deg, rgba(14,18,44,.94), rgba(26,34,72,.9)); border: 3px double #e0b85a; border-radius: 6px; color: #f4e6c2; box-shadow: 0 0 10px rgba(232,180,70,.35); }
+.sysmsg b { color: #ffd98a; text-shadow: 0 0 6px rgba(255,190,70,.6); }
+.sysmsg.warn, .sysmsg.boss { border-color: #ff8a7a; box-shadow: 0 0 10px rgba(255,90,70,.4); }
