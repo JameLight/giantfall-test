@@ -844,7 +844,7 @@ body:not(.touch-ui) .sys { left: var(--sl); top: auto; bottom: calc(var(--sb) + 
 body:not(.touch-ui) #wbar .wbtns { left: auto; right: var(--sr); top: auto; bottom: calc(var(--sb) + 1.2em); flex-direction: row; }
 body:not(.touch-ui) #wbar .wbtns.mini .hubb { font-size: 0; gap: 0; padding: 0.3em; } body:not(.touch-ui) #wbar .wbtns.mini .hubb .ic { width: 28px; height: 28px; }
 /* in the town the fight buttons step back */
-body.intown .touch-ui .tbtns, .touch-ui.intown .tbtns, body.intown .tbtns { transform: scale(.72); transform-origin: right bottom; opacity: .7; }
+body.intown .touch-ui .tbtns, .touch-ui.intown .tbtns, body.intown .tbtns { transform: scale(.85); transform-origin: right bottom; opacity: .7; }   /* never under 44 px: the buttons already follow the screen's height */
 body.intown .keys { opacity: .6; }
 /* a computer: the skill bar bottom centre over the EXP strip */
 body:not(.touch-ui) .hbar { top: var(--st); bottom: auto; width: 19em; }
@@ -1201,3 +1201,75 @@ body:not(.touch-ui) #wbar .wbtns { right: var(--sr); }
 /* the novel's "ติ๊ง!" before every system line, small and gold */
 .sysmsg .ting { font-style: normal; font-weight: 900; font-size: 0.78em; color: #fff2c8; margin-right: 0.35em; text-shadow: 0 0 6px rgba(255,200,90,.9); }
 .sysmsg.warn .ting, .sysmsg.boss .ting { color: #ffd0c8; text-shadow: 0 0 6px rgba(255,90,70,.9); }
+/* the picked target's small health bar under its red ring (rules.combatV3, src/main.js targetView) */
+.tgthp { position: absolute; width: 46px; height: 6px; margin-left: -23px; background: #1a0d0dcc; border: 1px solid #000; border-radius: 3px; pointer-events: none; overflow: hidden; z-index: 3; }
+.tgthp i { display: block; height: 100%; width: 100%; background: linear-gradient(#ff6a5a, #d42a1e); }
+/* phone pass (design/g14/LAUNCH-CHECK.md): a list with more below fades at its bottom edge (src/ui/scrollhint.js);
+   the player frame sits on a dark plate so its words read over a bright floor or sky; the job name is not cut */
+.more-down { -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 2.4em), rgba(0,0,0,.15)); mask-image: linear-gradient(to bottom, #000 calc(100% - 2.4em), rgba(0,0,0,.15)); }
+.touch-ui .hbar { width: 13em; }
+.touch-ui .hbar.grow .pinfo { background: rgba(28,18,10,.55); border-radius: 0.55em; padding: 0.15em 0.45em 0.3em; }
+.touch-ui .hbar .lab { text-overflow: clip; }
+/* a phone held sideways: the touch buttons follow the screen's height (design/g14/research/mobile-buttons.md: the big
+   action games' attack button is 17-21% of the screen's height, skills 10-15%, the right cluster under about half).
+   3.3vh puts Strike near 24% and the skills near 15%, never under 12px a unit (a skill's 4.4 units then stay over the
+   48 px floor, so no two buttons meet on a very short screen); a tall screen keeps the old size; the pause menu's Buttons
+   setting enlarges it (--bscale 1, 1.2, 1.4) for players who want them bigger */
+@media (min-aspect-ratio: 1/1) { .touch-ui .tbtns { font-size: calc(max(12px, min(1.1em, 3.3vh)) * var(--bscale, 1)); } }
+@media (min-aspect-ratio: 1/1) and (min-height: 340px) { .touch-ui .tbtns { font-size: calc(max(12px, min(1.25em, 3.3vh)) * var(--bscale, 1)); } }
+/* the hero window's pages of the open group, in the title bar (src/main.js showChar GROUPS) */
+.cwb .subtabs { display: flex; gap: 6px; min-width: 0; overflow-x: auto; }
+.cwb .subtabs .tab.sub { flex: none; min-height: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid rgba(232,200,120,.45); background: rgba(0,0,0,.25); color: #d8c9a0; font-weight: 700; font-size: max(12px, 0.8em); white-space: nowrap; }
+.cwb .subtabs .tab.sub.on { border-color: #ffd98a; background: rgba(201,162,74,.3); color: #ffe6a8; box-shadow: 0 0 8px #c98a10; }
+/* the skill book, style A: named rows on the left, the chosen skill and the four buttons on the right */
+.cwb .skpage { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 10px; height: 100%; min-height: 0; }
+.cwb .sklist { overflow-y: auto; min-height: 0; display: flex; flex-direction: column; gap: 4px; padding-right: 2px; }
+.cwb .bmain:not(.isstage) .skrow { position: relative; display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; align-items: center; gap: 8px; min-height: 48px; padding: 4px 8px; border-radius: 10px; border: 1px solid rgba(232,200,120,.25); text-align: left; color: #f4e6c2; }
+.cwb .skrow .ic { width: 40px; height: 40px; border-radius: 50%; }
+.cwb .skrow kbd { position: absolute; left: 34px; top: 30px; width: 18px; height: 18px; border-radius: 50%; background: #ffd36b; color: #2a1d00; font: 800 11px/18px var(--font); text-align: center; }
+.cwb .skrow .skn { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.cwb .skrow .skn b { font-size: max(13px, 0.86em); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cwb .skrow .skn small { font-size: max(11px, 0.7em); color: #b9ad8c; }
+.cwb .skrow .mbar { display: block; height: 5px; border-radius: 3px; background: rgba(255,255,255,.12); overflow: hidden; max-width: 140px; }
+.cwb .skrow .mbar i { display: block; height: 100%; background: linear-gradient(90deg, #d9a730, #ffe08a); }
+.cwb .skrow em { font-style: normal; font-size: max(12px, 0.74em); color: #ffd98a; white-space: nowrap; }
+.cwb .bmain:not(.isstage) .skrow.sel { background: rgba(255,200,90,.2); border-color: #ffd98a; box-shadow: inset 3px 0 0 #ffd98a; }
+.cwb .skrow.miss { opacity: .6; } .cwb .skrow.miss .ic { filter: grayscale(1); }
+.cwb .skdet2 { min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
+.cwb .skdet2 .rout { display: flex; align-items: center; gap: 10px; }
+.cwb .skdet2 .rout .ic.big { width: 48px; height: 48px; border-radius: 50%; flex: none; }
+.cwb .skdet2 .rout b { display: block; font-size: max(14px, 0.95em); color: #ffe6a8; } .cwb .skdet2 .rout b i { font-style: normal; color: #ffd36b; margin-left: 4px; }
+.cwb .skdet2 .rout small { font-size: max(12px, 0.72em); color: #b9ad8c; }
+.cwb .skdet2 .sktxt { margin: 0; font-size: max(13px, 0.8em); line-height: 1.5; }
+.cwb .skdet2 .skup { margin: 0; font-size: max(12px, 0.76em); color: #7fe08a; } .cwb .skdet2 .skup.lock { color: #e0b0a0; }
+.cwb .skput2 { margin-top: auto; display: flex; flex-direction: column; gap: 4px; }
+.cwb .skput2 small { font-size: max(12px, 0.72em); color: #b9ad8c; }
+.cwb .skslots { display: flex; gap: 8px; }
+.cwb .bmain:not(.isstage) .bbtn.sks { position: relative; width: 48px; height: 48px; min-width: 48px; border-radius: 50%; border: 2px dashed #c9a24a; padding: 0; overflow: hidden; display: grid; place-items: center; }
+.cwb .bbtn.sks .ic { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.cwb .bbtn.sks kbd { position: absolute; right: 1px; bottom: 1px; width: 16px; height: 16px; border-radius: 50%; background: #ffd36b; color: #2a1d00; font: 800 10px/16px var(--font); text-align: center; }
+.cwb .bmain:not(.isstage) .bbtn.sks.on { border-style: solid; border-color: #ffd98a; box-shadow: 0 0 10px #c98a10; }
+.cwb .bbtn.sks:disabled { opacity: .5; }
+/* the bag, style A: the kinds in one row, then worn gear | the grid | the chosen thing, always shown */
+.cwb .bhead { display: flex; align-items: center; gap: 8px; }
+.cwb .bchips { display: flex; gap: 6px; overflow-x: auto; min-width: 0; flex: 1; }
+.cwb .bchips .cat { flex: none; min-height: 44px; padding: 0 12px; border-radius: 20px; font-size: max(12px, 0.78em); white-space: nowrap; }
+.cwb .bagA { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px; flex: 1; min-height: 0; margin-top: 6px; }
+.cwb .bdoll { display: flex; flex-direction: column; gap: 4px; min-height: 0; }
+.cwb .bdoll p { margin: 0; text-align: center; }
+.cwb .bdg { display: grid; grid-template-columns: repeat(3, 44px); gap: 4px; overflow-y: auto; min-height: 0; }
+.cwb .bdg .ptile { width: 44px; height: 44px; min-width: 0; min-height: 0; position: relative; }
+.cwb .bagA .romain { min-height: 0; display: flex; flex-direction: column; }
+.cwb .bagA .ipane { display: grid; grid-template-columns: minmax(0, 1fr) min(17em, 46%); gap: 8px; flex: 1; min-height: 0; }
+.cwb .bagA .ipane .bag { height: 100%; max-height: none; overflow-y: auto; }
+.cwb .bagA .ipane .idetail { position: static; width: auto; max-height: none; height: 100%; overflow-y: auto; box-shadow: none; }
+.cwb .bagA .ipane .idetail.hint { display: flex; align-items: center; justify-content: center; text-align: center; }
+.cwb .bagA .ipane .idetail .dclose { display: none; }
+.cwb .subtabs .tab.sub .badge { position: static; margin-left: 4px; vertical-align: 1px; }
+.cwb .bdg .ptile { position: static; left: auto; top: auto; right: auto; bottom: auto; margin: 0; }
+.cwb .skdet2 .rout { flex-direction: row; justify-content: flex-start; text-align: left; }
+.cwb .skdet2 { text-align: left; }
+.cwb .bagA .ipane .idetail .iacts { position: sticky; bottom: 0; margin: 6px 0 0; padding: 6px 0 0; background: #141a36; z-index: 2; }
+.cwb .bagA .ipane .idetail .iacts { flex-wrap: nowrap; gap: 4px; } .cwb .bagA .ipane .idetail .iacts > * { flex: 1 1 0; min-width: 0; min-height: 44px; padding: 0 4px; font-size: max(12px, 0.74em); }
+.cwb .brail .tab .badge { top: 1px; right: 1px; }
+@media (max-height: 460px) { .cwb .bagA .idetail .item .ic.big, .cwb .bagA .idetail .rout .ic.big { display: none; } .cwb .bagA .idetail .item { padding: 4px 6px; } }
