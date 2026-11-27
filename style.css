@@ -61,7 +61,7 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: #f3c9a8; fon
 .touch-ui .combo { top: var(--st); right: calc(var(--sr) + max(44px, 2.8em) + 0.8em); }   /* beside the pause button, the top row */
 .combo b { font-size: 2.6em; font-weight: 900; } .combo span { display: block; font-weight: 800; letter-spacing: .15em; margin-top: -0.3em; }
 .combo em { display: block; font-style: normal; font-weight: 900; margin-top: 0.3em; animation: pop .5s; }
-.combo em.mix { color: #ffe07a; } .combo em.counter { color: #9ff0ff; font-size: 1.2em; } .combo em.repeat { color: #ffb0a0; } .combo em.spent { color: #fff3c4; font-size: 1.2em; }
+.combo em.mix { color: #ffe07a; } .combo em.counter { color: #9ff0ff; font-size: 1.2em; } .combo em.counter.gold { color: #ffe08a; } .combo em.repeat { color: #ffb0a0; } .combo em.spent { color: #fff3c4; font-size: 1.2em; }
 @keyframes pop { from { transform: scale(1.6); } to { transform: scale(1); } }
 
 /* banner, Elara, numbers, flash */
@@ -80,6 +80,10 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: #f3c9a8; fon
 .num.tag { font-size: max(12px, 0.95em); letter-spacing: .06em; } .num.cracked { color: #ffb36b; } .num.bound { color: #9ff0ff; } .num.perfect { color: #9ff0ff; font-size: 1.3em; } .num.counter { color: #e8fdff; text-shadow: 0 0 0.5em #4fd8ff; }
 .num.counterdmg { color: #ffffff; font-size: 2.6em; text-shadow: 0 0 0.2em #12aee0, 0 0 0.6em #4fd8ff, 0 0.06em 0 #0a5f80; }
 .num.counterbig { color: #ffffff; font-size: 2.1em; letter-spacing: .05em; text-shadow: 0 0 0.25em #12aee0, 0 0 0.8em #4fd8ff, 0 0.08em 0 #0a5f80; }
+/* the counter while rules.combatV3 is on: white-gold, not cyan (design/g13/COMBAT-SKILLS-V3.md 2.4) */
+.num.counterbig.gold, .num.counterdmg.gold { color: #fffaf0; text-shadow: 0 0 0.25em #e0a020, 0 0 0.8em #ffd36b, 0 0.08em 0 #6a4a08; }
+/* a class skill's word over its target (rules.combatV3: src/view/class-fx.js): Perfect!, x2, ARMOR UP, STUNNED */
+.num.cs { color: #fff3c4; text-shadow: 0 0.1em 0 var(--ink), 0 0 0.35em #b07a10; }
 .flash { position: absolute; inset: 0; opacity: 0; mix-blend-mode: screen; }
 .pausebtn { position: absolute; top: var(--st); right: var(--sr); width: 2.8em; height: 2.8em; min-width: 44px; min-height: 44px; border-radius: 0.7em; border: 0.16em solid var(--ink); background: var(--cream); font-weight: 900; color: var(--ink); }
 
@@ -129,6 +133,10 @@ kbd { display: inline-block; min-width: 1.8em; padding: 0.05em 0.35em; margin-ri
 .tb-breaker { width: 4.6em; height: 4.6em; right: 1.2em; bottom: 7.6em; background: #fff0c4; }
 .tb-light.glow { box-shadow: 0 0 0.9em #4fd8ff; animation: pulse .45s infinite alternate; }
 .tb-breaker.glow { box-shadow: 0 0 0.9em var(--gold); animation: pulse .45s infinite alternate; }
+/* the attack button as the finisher (rules.combatV3): gold, as Break's FALL! was */
+.tb-light.fin { box-shadow: 0 0 0.9em var(--gold); animation: pulse .45s infinite alternate; }
+.key.k-light.fin { background: #fff3c4; box-shadow: 0 0 0.8em var(--gold); animation: pulse .45s infinite alternate; }
+.keys .key.k-light.fin { background: none; box-shadow: none; animation: none; } .keys .key.k-light.fin .kart .sk { box-shadow: 0 0 0.9em var(--gold), 0 0 0.3em var(--gold); animation: pulse .45s infinite alternate; }
 .tb-dodge { width: 4.4em; height: 4.4em; right: 12.6em; bottom: 0.2em; background: #e9e0ff; }
 /* a phone: the whole cluster a quarter larger (Strike ~110 px, skills and Roll ~66 px on an iPhone held sideways),
    the size class of the big mobile action games; testers asked for bigger buttons */
@@ -180,6 +188,9 @@ body.turn #turn { display: flex; }
 /* no browser zoom or text resizing on phones: every layer takes touches as game input */
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 #app, #c, #ui, #ui button, .tpad, .tbtns, .tb { touch-action: none; }
+/* a button inside a window may be a row of a list: a thumb that lands on it and slides must scroll the list (with
+   none, the skill book and the bag did not move under a thumb on any row). Pans only: still no pinch zoom. */
+#ui .modal button, #ui .modal [data-a], #townui .tsheet, #townui .tsheet button { touch-action: pan-x pan-y; }
 
 /* tester questions (test link only): plain labels, roomy boxes, 16px text so iPhone does not zoom on focus */
 .qa { text-align: left; margin: 0.4em 0 0.6em; } .qa label { display: block; font-weight: 700; margin: 0.7em 0 0.25em; font-size: max(13px, 0.9em); }
@@ -517,6 +528,9 @@ body.modal-on .coach { visibility: hidden; }
 .tb .sk { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
 .tb em { position: absolute; inset: 0; height: auto !important; border-radius: 50%; background: conic-gradient(rgba(20,14,10,.66) calc(var(--p, 0) * 360deg), transparent 0); display: grid; place-items: center; color: #fff; font: 900 1.2em var(--font); font-style: normal; text-shadow: 0 0 0.3em #000; z-index: 1; }
 .tb b { position: absolute; left: 50%; bottom: 6%; transform: translateX(-50%); z-index: 2; padding: 0 0.35em; border-radius: 0.5em; background: rgba(47,36,31,.72); color: #fff; white-space: nowrap; line-height: 1.25; }
+/* the picture, the cooldown and the shade are round of themselves, so the button need not clip: a long name (Eternal
+   Seal, ผนึกนิรันดร์) shows whole on its tag, which may stand out past the ring, instead of losing both ends */
+.tb { overflow: visible; }
 .tb-light b { bottom: 10%; }
 /* the powers held, as round buff pictures under the HP bar */
 .powers i { width: 2.4em; height: 2.4em; padding: 0; border-radius: 50%; overflow: hidden; font-size: 1em; background: var(--cream); }
@@ -1163,6 +1177,17 @@ body:not(.touch-ui) #wbar .wbtns { right: var(--sr); }
 .sysw .go { color: #2f1a00; background: linear-gradient(#ffe08a, #e0a12a); border-color: #ffd98a; box-shadow: 0 0 8px rgba(255,190,70,.45); }
 .sysw .go:disabled { background: rgba(255,255,255,.1); color: rgba(255,240,200,.45); box-shadow: none; border-color: rgba(224,184,90,.35); }
 .sysw .ghost { color: #ffe6a8; border-color: #e0b85a; }
+/* the [System Update] box of a save moved to combat v3: what changed, one short line each, gold bullets; on a short
+   screen the lines go in two columns (read down) and smaller so the two buttons stay in sight */
+.modal:has(.sysupd) .card { width: min(40em, 94vw); max-height: 96dvh; }
+.sysupd .row { flex-wrap: nowrap; }
+.sysupd .suplist { list-style: none; margin: 0.2em 0 0.5em; padding: 0; text-align: left; display: grid; gap: 0.3em; }
+.sysupd .suplist li { position: relative; padding-left: 1.1em; line-height: 1.35; }
+.sysupd .suplist li::before { content: '◆'; position: absolute; left: 0; top: 0.05em; color: #e0b85a; font-size: 0.8em; }
+.sysupd .suplist b { color: #ffe08a; }
+.sysupd .row { justify-content: center; }
+.sysupd .row button { min-height: 44px; min-width: 7em; flex: 0 1 auto; } .sysupd .row .go { width: auto; min-width: 12em; margin-top: 0; } .sysupd .row .ghost { margin-top: 0; }
+@media (max-height: 460px) { .modal:has(.sysupd) .card { width: min(54em, 96vw); padding: 0.45em 0.7em; } .sysupd .sysplate { padding: 0.35em 2.2em; font-size: 1em; } .sysupd .suplist { display: block; columns: 2; column-gap: 1.4em; font-size: 0.86em; } .sysupd .suplist li { break-inside: avoid; margin-bottom: 0.2em; } .sysupd .syshead2 { margin: 0; } .sysupd .suplist li { line-height: 1.25; } }
 /* the class window: four painted cards, the chosen path beside them */
 .cpick.sysw { max-width: 60em; }
 .cpick .cpbody { display: grid; grid-template-columns: minmax(0, 1fr) minmax(11em, 15em); gap: 0.6em; align-items: stretch; }
@@ -1273,3 +1298,111 @@ body:not(.touch-ui) #wbar .wbtns { right: var(--sr); }
 .cwb .bagA .ipane .idetail .iacts { flex-wrap: nowrap; gap: 4px; } .cwb .bagA .ipane .idetail .iacts > * { flex: 1 1 0; min-width: 0; min-height: 44px; padding: 0 4px; font-size: max(12px, 0.74em); }
 .cwb .brail .tab .badge { top: 1px; right: 1px; }
 @media (max-height: 460px) { .cwb .bagA .idetail .item .ic.big, .cwb .bagA .idetail .rout .ic.big { display: none; } .cwb .bagA .idetail .item { padding: 4px 6px; } }
+/* the class skills' bar on a phone (rules.combatV3; design/g13/COMBAT-SKILLS-V3.md 5.2): the attack button keeps its
+   corner; places 1-4 (or 5-8) on an arc round its middle (9.4em across, 8em up, so the top places stay under the hit
+   counter on a 280 px screen), from level with it on the left to just over it; the page switch to the left of the
+   arc's top, clear of the map in the corner above; Roll and the potion to the left. Everything is in em of the cluster, so it grows with the screen's height and
+   the button-size setting as the old buttons did; at its smallest (12 px) a place is 60 px, the switch 52 and the potion 44;
+   the switch stays 44 px or more in a town too, where the whole cluster is drawn at 85% */
+.tbtns.v3 { width: 20.5em; height: 14.6em; }
+.tbtns.v3 .tb-s { width: 5em; height: 5em; background: #f3e6cf; }
+.tbtns.v3 .tb-s1 { right: 10.4em; bottom: 0.4em; } .tbtns.v3 .tb-s2 { right: 9.1em; bottom: 5.5em; }
+.tbtns.v3 .tb-s3 { right: 5.25em; bottom: 8.95em; } .tbtns.v3 .tb-s4 { right: 0.15em; bottom: 9em; }
+.tbtns.v3 .tb-page { width: 4.35em; height: 4.35em; right: 12.7em; bottom: 10.5em; background: #2f241f; color: #fff3dc; border-color: #f0d9a8; }
+.tbtns.v3 .tb-page span { font: 900 max(12px, 0.85em) var(--font); letter-spacing: 0; } .tbtns.v3 .tb-page span::before { content: '⇄'; display: block; font-size: 1.3em; line-height: 1; }
+.tbtns.v3 .tb-dodge { width: 4.6em; height: 4.6em; right: 15.7em; bottom: 0.7em; }
+.tbtns.v3 .tb-potion { width: 3.7em; height: 3.7em; right: 15.32em; bottom: 6.32em; }
+.tbtns.v3 .tb-s .sk { display: none; } .tbtns.v3 .tb-s.art .sk { display: block; }
+.tbtns.v3 .tb-s kbd { position: absolute; left: 50%; top: 4%; transform: translateX(-50%); z-index: 2; min-width: 0; margin: 0; padding: 0 0.3em; font-size: max(12px, 0.7em); background: rgba(47,36,31,.72); color: #fff; border-radius: 0.5em; }
+.tbtns.v3 .tb-s .skv { position: absolute; left: 50%; top: 34%; transform: translateX(-50%); z-index: 2; font: 900 max(12px, 0.72em)/1.1 var(--font); font-style: normal; color: #2f241f; white-space: nowrap; text-shadow: 0 0 0.25em #fff; }
+.tbtns.v3 .tb-s.art .skv { color: #fff; text-shadow: 0 0 0.3em #000; }
+/* a skill's name is read whole: it breaks onto a second line between words (between syllables in Thai), inside a word only when one word is wider than the button, instead of being cut */
+.tbtns.v3 .tb-s b { width: max-content; max-width: 100%; padding: 0 0.1em; white-space: normal; text-align: center; line-height: 1.05; font-size: max(12px, 0.7em); font-weight: 700; letter-spacing: -0.04em; overflow-wrap: anywhere; }
+/* on a touch screen the round skill button holds the Lv/MP line at the top and the name below it, kept apart: the place's key number is for a keyboard (the page button already says which places show), so it is not drawn there; a name of one word wider than the button breaks where English hyphenates it */
+.tbtns.v3 .tb-s kbd { display: none; }
+.tbtns.v3 .tb-s .skv { top: 13%; letter-spacing: -0.03em; }
+.tbtns.v3 .tb-s b { top: 40%; bottom: auto; padding: 0; letter-spacing: -0.06em; hyphens: auto; -webkit-hyphens: auto; }
+.tbtns.v3 .tb-s.none { background: rgba(243,230,207,.35); border-style: dashed; } .tbtns.v3 .tb-s.none b, .tbtns.v3 .tb-s.none .skv { display: none; }
+/* a place that cannot be pressed now (weapon, MP, lock) is greyed under its words: the picture and the round go grey and
+   darker, the Lv/MP line and the name stay as bright as on a ready place so they read while it waits */
+.tbtns.v3 .tb-s.wpn, .tbtns.v3 .tb-s.nomp, .tbtns.v3 .tb-s.lock { background: #a8a197; border-color: #6f6a62; }
+.tbtns.v3 .tb-s.wpn .sk, .tbtns.v3 .tb-s.nomp .sk, .tbtns.v3 .tb-s.lock .sk { filter: grayscale(.85) brightness(.55); }
+.tbtns.v3 .tb-s .need { position: absolute; right: 2%; bottom: 2%; width: 40%; height: 40%; z-index: 3; border-radius: 50%; background: #2f241f; border: 0.12em solid #f0d9a8; object-fit: cover; }
+.tbtns.v3 .tb-s.aim { box-shadow: 0 0 0 0.25em #ffe08a; } .tbtns.v3 .tb-s.aimoff { box-shadow: 0 0 0 0.25em #ff6b5a; }
+/* the class skills' bar on a computer: the eight places in one row with the attack key, Roll and the potion */
+.keys.v3 .key:not(.k-light):not(.k-dodge):not(.k-potion):not(.kslot) { display: none !important; }
+.keys.v3 .kslot .kart .sk { display: none; } .keys.v3 .kslot.art .kart .sk { display: block; }
+.keys.v3 .kslot .kart { border-radius: 50%; background: #f3e6cf; box-shadow: inset 0 0 0 0.16em var(--ink); }
+.keys.v3 .kslot.none .kart { background: rgba(243,230,207,.35); box-shadow: inset 0 0 0 0.16em rgba(47,36,31,.6); }
+.keys.v3 .kslot .skv { position: absolute; left: 0; right: 0; top: 36%; z-index: 1; font: 900 max(12px, 0.72em)/1.1 var(--font); font-style: normal; color: #2f241f; text-align: center; }
+.keys.v3 .kslot.wpn .kart, .keys.v3 .kslot.nomp .kart, .keys.v3 .kslot.lock .kart { background: #a8a197; }   /* greyed under its words, as on a phone */
+.keys.v3 .kslot.wpn .kart .sk, .keys.v3 .kslot.nomp .kart .sk, .keys.v3 .kslot.lock .kart .sk { filter: grayscale(.85) brightness(.55); }
+.keys.v3 .kslot .need { position: absolute; right: -0.2em; bottom: -0.2em; width: 1.6em; height: 1.6em; z-index: 3; border-radius: 50%; background: #2f241f; border: 0.12em solid #f0d9a8; object-fit: cover; }
+.keys.v3 .kslot b { max-width: 5.6em; white-space: normal; text-align: center; line-height: 1.05; font-weight: 700; letter-spacing: -0.03em; overflow-wrap: anywhere; }
+/* the same row's width as 4.6em keys 0.45em apart, a little wider keys so a long word of a skill's name fits whole */
+.keys.v3 .key { width: 4.85em; } .keys.v3 { gap: 0.2em; }
+/* the class skills in the skill book (rules.combatV3): a skill with no picture yet shows a plain round stone; a place
+   holding one shows its initials; the page switch beside the four places */
+.cwb .ic.csk { display: block; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #6b5a3a, #2a1e10); border: 2px solid #c9a24a; box-sizing: border-box; }
+.cwb .skdet2 .rout .ic.big.csk { width: 48px; height: 48px; flex: none; }
+.cwb .bbtn.sks .csn { font: 900 13px var(--font); color: #ffe6a8; }
+.cwb .bmain:not(.isstage) .bbtn.sks.skpg { border-style: solid; border-color: #f0d9a8; background: #2f241f; color: #fff3dc; font: 900 18px var(--font); }
+.cwb .bbtn.sks.csl kbd { left: 50%; top: auto; right: auto; bottom: 1px; transform: translateX(-50%); width: auto; min-width: 17px; height: 17px; padding: 0 3px; border-radius: 9px; font-size: 12px; line-height: 17px; box-sizing: border-box; white-space: nowrap; }
+.cwb .sklist .sknone { margin: 8px 4px; line-height: 1.5; color: #e8d8b0; }
+.cwb .skslots.all8 { flex-wrap: wrap; max-width: 232px; }
+.tbtns.v3 .tb-s .skv .mpn, .keys.v3 .kslot .skv .mpn { color: #3d4fd0; } .tbtns.v3 .tb-s.art .skv .mpn { color: #b9c6ff; }
+
+/* the class skills' points (rules.combatV3, src/main.js showChar sbook): the job bar and the points left over the list,
+   Clear / Confirm or the reset under it, + and − beside the chosen skill's name, its prerequisites, and the skills just
+   learned in a system box of the window's own (dark, double gold, the title plate) */
+.cwb .skpage { position: relative; }
+.cwb .skleftcol { min-height: 0; display: flex; flex-direction: column; gap: 4px; }
+.cwb .skleftcol .sklist { flex: 1; }
+.cwb .skpts { display: flex; align-items: center; gap: 10px; padding: 2px 4px; font-size: max(12px, 0.74em); color: #e8d8b0; }
+.cwb .skjob { display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0; } .cwb .skjob b { color: #ffd98a; white-space: nowrap; }
+.cwb .skjob .jbar { flex: 1; min-width: 40px; height: 7px; border-radius: 4px; background: rgba(0,0,0,.5); border: 1px solid rgba(224,184,90,.45); overflow: hidden; }
+.cwb .skjob .jbar i { display: block; height: 100%; background: linear-gradient(90deg, #7a4fd0, #c9a8ff); }
+.cwb .skleft { white-space: nowrap; } .cwb .skleft b { color: #ffe6a8; font-size: 1.15em; } .cwb .skleft.some b { color: #7fe08a; }
+.cwb .skacts { display: flex; gap: 8px; justify-content: flex-end; }
+.cwb .skacts .gob { min-width: 0; flex: 1; line-height: 1.15; }
+.cwb .bmain .skrow em.tried { color: #7fe08a; } .cwb .bmain .skrow em.no { color: #b9ad8c; }
+.cwb .bmain:not(.isstage) .skrow.try { border-color: #7fe08a; }
+.cwb .skrow .skn small.skneedw { color: #e0b0a0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cwb .skdet2 .rout > div { flex: 1; min-width: 0; }
+.cwb .skpm { display: flex; gap: 6px; flex: none; }
+.cwb .skpm button { width: 44px; height: 44px; border-radius: 50%; padding: 0; font: 900 22px/1 var(--font); color: #2f1a00; background: linear-gradient(#ffe08a, #e8a12a); border: 1.5px solid #fff2c0; box-shadow: 0 0 8px rgba(255,190,60,.4); }
+.cwb .skpm .skminus { background: rgba(0,0,0,.4); color: #ffe6a8; border-color: #c9a24a; box-shadow: none; }
+.cwb .skpm button:disabled { opacity: .35; box-shadow: none; }
+.cwb .skdet2 .skneed { margin: 0; font-size: max(12px, 0.76em); color: #e0b0a0; } .cwb .skdet2 .skneed.met { color: #7fe08a; }
+.cwb .csdone { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(560px, 88%); max-height: 100%; box-sizing: border-box; z-index: 3; display: flex; flex-direction: column; gap: 6px; padding: 8px 14px; border: 3px double #e0b85a; border-radius: 8px; color: #f4e6c2;
+  background: url(ui/corner-tl.webp) left top / 40px no-repeat, url(ui/corner-tr.webp) right top / 40px no-repeat, url(ui/corner-bl.webp) left bottom / 40px no-repeat, url(ui/corner-br.webp) right bottom / 40px no-repeat, linear-gradient(180deg, #1a2248, #0c1028);
+  box-shadow: 0 0 0 1px rgba(255,214,120,.2), 0 0 18px rgba(232,180,70,.45), inset 0 0 24px rgba(232,180,70,.15); }
+.cwb .csdone .syshead2 { display: flex; justify-content: center; }
+.cwb .csdone .csrows { flex: 1 1 auto; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 2px; }
+.cwb .csdone .csrow { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 28px; }
+.cwb .csdone .csmsg { font-weight: 700; font-size: max(13px, 0.86em); } .cwb .csdone .csmsg b { color: #ffd98a; text-shadow: 0 0 6px rgba(255,190,70,.6); }
+.cwb .csdone .csrow em { font-style: normal; font-size: max(12px, 0.76em); color: #7fe08a; white-space: nowrap; }
+.cwb .csdone .gob.csput { min-width: 0; padding: 0 14px; }
+.cwb .csdone > .gob { align-self: center; min-width: 140px; flex: none; } .cwb .csdone .csput { flex: none; }
+/* a phone's Safari leaves about 280 px: the box keeps its rows and OK and lets the plate go (its gold frame and the
+   [New Skill!] words still say what it is) */
+@media (max-height: 300px) { .cwb .csdone { padding: 4px 10px; gap: 2px; } .cwb .csdone .syshead2 { display: none; } }
+.cwb .s7bar.job > i > i { background: linear-gradient(90deg, #7a4fd0, #c9a8ff); }
+/* the job page's weapon paths of a class (rules.combatV3): plain chips under the class's own words */
+.charw .jpaths { display: flex; flex-wrap: wrap; gap: 0.3em; margin: 0 0 0.5em; }
+.charw .jpath { padding: 0.25em 0.6em; border: 1px solid rgba(224,184,90,.55); border-radius: 1em; font-size: max(12px, 0.8em); line-height: 1.5; color: #f4e6c2; background: rgba(255,255,255,.07); }
+.charw .jtop3 + .jbody .tlv { white-space: nowrap; flex-basis: 3.2em; }
+/* the v3 class cards: a class name is short, so its box shows the Thai marks above and below in full */
+.charw .jtop3 .jcard b { overflow: visible; line-height: 1.5; }
+/* the v3 skill book's rows: the line under a name and the bar place's number at 12 px, the size every screen reads at */
+.cwb .skleftcol .skrow .skn small { font-size: max(12px, 0.7em); } .cwb .skleftcol .skrow kbd { font-size: 12px; }
+/* the computer's skill row (rules.combatV3): while a place cools down its seconds stand alone in the round, the Lv/MP
+   line under them comes back when it is ready */
+.keys.v3 .kslot .kart:has(.cd:not(:empty)) .skv { visibility: hidden; }
+/* a long class name in the hero frame (rules.combatV3: the Apprentice, the Awakener in Thai) set tighter so it is not cut */
+.hbar .lab .job.lng { letter-spacing: -0.06em; }
+/* the computer's place with a skill picture: the Lv/MP line in white over it, as on a phone */
+.keys.v3 .kslot.art .skv { color: #fff; text-shadow: 0 0 0.3em #000; } .keys.v3 .kslot.art .skv .mpn { color: #b9c6ff; }
+/* a phone place cooling down (rules.combatV3): its seconds take the Lv/MP line's spot at the top, clear of the name */
+.tbtns.v3 .tb-s em { place-items: start center; padding-top: 0.5em; box-sizing: border-box; font-size: max(12px, 0.85em); text-shadow: 0 0 0.3em #000; }
+.tbtns.v3 .tb-s em:not(:empty) ~ .skv { visibility: hidden; }
