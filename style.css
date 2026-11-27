@@ -2767,3 +2767,17 @@ body:has(.modal:not(.hide) .g17r) :is(.hbar, .gbar, .prog, .pausebtn, .sys, .xpl
 /* the refine hidden-power button says what it is ("Hidden power A", not a bare grade letter): two short lines */
 .forgew .fpotb .fpotw { display: block; white-space: nowrap; line-height: 1.1; text-align: center; font-size: 12px; }
 .forgew .fpotb .fpi { position: relative; display: inline-block; font-style: normal; } .forgew .fpotb .fpg { position: absolute; right: -6px; bottom: -4px; min-width: 14px; padding: 0 2px; border-radius: 7px; background: #3a1f5c; border: 1px solid #c9a0ff; color: #fff; font-size: 11px; line-height: 13px; text-align: center; }
+
+/* the skill book on a phone (Jame's iPhone 27 Nov): the name gives way before the level does, so "Lv 0→1" never runs under
+   the −/+ buttons; Clear sits over Confirm, clear of the screen buttons' picture; the Ting! notice of skills just learned
+   is drawn over the whole window, not clipped inside the list */
+.cwb.mA.g7 .mA-skill .det h2 { display: flex; min-width: 0; overflow: hidden; }
+.cwb.mA.g7 .mA-skill .det h2 .nm { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cwb.mA.g7 .mA-skill .det h2 .lvx { flex: none; white-space: nowrap; }
+.cwb.mA .mA-skill .dacts:has(#csclear) { flex-direction: column; align-items: stretch; gap: 8px; }
+.cwb.mA.g7 .mA-skill .dacts:has(#csclear) { top: calc(527 * var(--V) - 52px); height: auto; gap: 8px; }
+.cwb.mA.g7 .mA-skill .dacts #csclear { height: 44px; min-height: 44px; flex: none; }
+.cwb.mA.g7 .csdone { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(560px, 70%); max-height: 90%; z-index: 30; box-shadow: 0 0 0 100vmax rgba(5, 8, 20, .55), 0 10px 30px #000c; }
+/* the "Buttons on screen" caption stands on the row of places at every height (at 874x340 its 12 px floor made it taller
+   than its line, and the "3" place covered it) */
+.cwb.mA.g7 .mA-skill .slots .cap { top: auto; bottom: calc(-410 * var(--V) + 3px); height: auto; line-height: 1.15; }
