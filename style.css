@@ -2781,3 +2781,5 @@ body:has(.modal:not(.hide) .g17r) :is(.hbar, .gbar, .prog, .pausebtn, .sys, .xpl
 /* the "Buttons on screen" caption stands on the row of places at every height (at 874x340 its 12 px floor made it taller
    than its line, and the "3" place covered it) */
 .cwb.mA.g7 .mA-skill .slots .cap { top: auto; bottom: calc(-410 * var(--V) + 3px); height: auto; line-height: 1.15; }
+/* Elara's line on a phone (Jame's iPhone 28 Nov: it ran under Roll): between the stick and the fight buttons, wrapping */
+.touch-ui .coach, .touch-ui .coach.show { left: 27vw; right: auto; max-width: 33vw; transform: none; white-space: normal; }
