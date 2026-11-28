@@ -3214,8 +3214,8 @@ body:has(#ui > .modal .ef18) #ui > :not(.modal) { visibility: hidden !important;
 .card .g18.bk18 .bkline { position: absolute; left: 31.25vw; width: 49.42vw; top: 50%; height: max(3px, calc(0.8 * var(--h1))); transform: translateY(-50%); border-radius: 3px; background: linear-gradient(#a08848, #6e5a2a); box-shadow: 0 0 4px #000a; }
 .card .g18.bk18 .bkrow.clear .bkline { background: linear-gradient(#ffe08a, #c99a34); box-shadow: 0 0 8px #f0c05a88; }
 .card .g18.bk18 .bkrow .fl { position: absolute; top: calc(50% - var(--ns) / 2); width: var(--ns); height: var(--ns); min-width: 0; margin: 0; padding: 0; box-sizing: border-box; display: grid; place-items: center; border-radius: 50%; border: 0; font-weight: 800; color: #fff; }
-.card .g18.bk18 .bkrow .fl:nth-of-type(1) { left: calc(31.25vw - var(--ns) / 2); } .card .g18.bk18 .bkrow .fl:nth-of-type(2) { left: calc(43.6vw - var(--ns) / 2); } .card .g18.bk18 .bkrow .fl:nth-of-type(3) { left: calc(55.96vw - var(--ns) / 2); }
-.card .g18.bk18 .bkrow .fl:nth-of-type(4) { left: calc(68.31vw - var(--ns) / 2); } .card .g18.bk18 .bkrow .fl:nth-of-type(5) { left: calc(80.67vw - var(--ns) / 2); }
+.card .g18.bk18 .bkrow .fl:nth-child(3) { left: calc(31.25vw - var(--ns) / 2); } .card .g18.bk18 .bkrow .fl:nth-child(4) { left: calc(43.6vw - var(--ns) / 2); } .card .g18.bk18 .bkrow .fl:nth-child(5) { left: calc(55.96vw - var(--ns) / 2); }
+.card .g18.bk18 .bkrow .fl:nth-child(6) { left: calc(68.31vw - var(--ns) / 2); } .card .g18.bk18 .bkrow .fl:nth-child(7) { left: calc(80.67vw - var(--ns) / 2); }
 .card .g18.bk18 .bkrow .fl em { font-style: normal; font-size: max(14px, calc(var(--ns) * 0.44)); line-height: 1; display: flex; align-items: center; } .card .g18.bk18 .bkrow .fl em small { font-size: 0.62em; margin-left: 1px; }
 .card .g18.bk18 .bkrow .fl.open { background: radial-gradient(circle at 45% 35%, #7a7f92, #3c4052 75%); box-shadow: inset 0 0 0 max(2px, calc(var(--ns) * 0.06)) #a9afc4, 0 3px 8px #000a; color: #eef0f8; }
 .card .g18.bk18 .bkrow .fl.done { background: url(ui/g17/grade-coin.webp) center / contain no-repeat; color: #5a3806; text-shadow: 0 1px 0 #ffe9a8; }
@@ -3299,3 +3299,27 @@ body:has(#townui.tb18on) #ui > :not(.modal) { visibility: hidden !important; }
    the Thai marks above and below it */
 :is(.card .g18, #townui .tb18) .fit17 { overflow: hidden; line-height: 1.45; }
 .card .g18.rs18 .rsppl.more-down { -webkit-mask-image: linear-gradient(#000 calc(100% - 8px), transparent); mask-image: linear-gradient(#000 calc(100% - 8px), transparent); }
+/* the chest window with no chest left (design/g15/originals/chest's panel): where chests come from as three plain cards,
+   and the odds of each kind on a line of its own; once the last is opened, what was got in the same cards */
+.card .chest .ccard.csrc { border-color: var(--line); background: #141a33; }
+.card .chest .ccard.csrc .ic { opacity: .9; }
+.card .chest .odds2 { margin: 6px 0 2px; } .card .chest .odds2 .odds { margin: 2px 0; } .card .chest .odds2 .odds b { color: var(--txt); margin-right: 6px; }
+.card .chest .ccard b.fit17, .card .chest .ccard small.fit17 { max-width: 100%; white-space: nowrap; overflow: hidden; }
+/* chests all opened: Climb the tower beside Wear the best, the pair centred where the one gold button sits */
+.card .g17.chest .acts:has(.ghost) { left: 26vw; width: 48vw; display: flex; gap: 2vw; }
+.card .g17.chest .acts .ghost { flex: 1; height: 100%; min-height: 44px; margin: 0; border-radius: 999px; border: 2px solid var(--gold2); background: #10152b; color: var(--gold); font-weight: 800; font-size: max(14px, calc(4 * var(--h1))); }
+.card .g17.chest .acts:has(.ghost) .main { flex: 1; }
+@media (max-height: 330px) { .card .chest .ccard.csrc .ic, .card .chest .ccards .ccard .ic { width: 40px; height: 40px; } .card .chest .ccard { padding: 4px 6px 3px; } .card .chest .odds2 { margin-top: 2px; } .card .chest .odds2 .odds { margin: 0; line-height: 1.35; } }
+/* Choose a floor: a navy gold-edged pill just left of Enter the tower, the same height */
+#wbar .wfloor { position: absolute; left: calc(79.288vw - var(--pr) - max(110px, 13vw) - 1.5vw); top: min(85.156vh, calc(100vh - max(46px, 11.458vh) - 4px)); width: max(110px, 13vw); height: max(46px, 11.458vh); padding: 0; border: 2px solid #b98a2e; border-radius: 999px; background: #10152b; color: #e9c46a; font-weight: 800; font-size: max(14px, 3.6vh); pointer-events: auto; display: flex; align-items: center; justify-content: center; line-height: 1.2; }
+/* the tower's fall: Choose a floor where Copy report was, Copy report beside it on the right */
+.card .g18.ef18 #efloor { left: 62.72vw; width: 12.57vw; } .card .g18.ef18 .acts:has(#efloor) #report { left: 76.6vw; width: 12.57vw; }
+/* the tower map as the floor picker (showMap pick): a reached floor's coin is a button, at least 44 px and centred on its
+   spot, that glows gold when picked; the header's rank chip says what to do, and once a floor is picked Play floor N
+   stands at the foot of the map, right of the first land's row (a coin is a row child after the name and the line, so the
+   spots count children: a button among the spans keeps its place) */
+.card .g18.bk18 { --nb: max(44px, var(--ns)); }
+.card .g18.bk18 .bkrow button.fl { width: var(--nb); height: var(--nb); margin: calc((var(--ns) - var(--nb)) / 2) 0 0 calc((var(--ns) - var(--nb)) / 2); cursor: pointer; font: inherit; font-weight: 800; }
+.card .g18.bk18 .bkrow .fl.picked { filter: drop-shadow(0 0 8px #ffd36b) drop-shadow(0 0 3px #ffd36b); transform: scale(1.12); }
+.card .g18.bk18 .fpbar { position: absolute; left: 85vw; width: 12vw; top: calc(88.54 * var(--h1)); transform: translateY(-50%); }
+.card .g18.bk18 .fpbar .main { width: 100%; min-height: 44px; height: max(44px, calc(10 * var(--h1))); padding: 0 6px; border: 0; border-radius: 999px; background: linear-gradient(#ffd977, #d79b25); color: #2a1d00; font-weight: 800; font-size: max(14px, calc(4.2 * var(--h1))); line-height: 1.1; box-shadow: 0 3px 8px rgba(0,0,0,.45); cursor: pointer; }
